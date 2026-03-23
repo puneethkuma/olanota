@@ -1,0 +1,121 @@
+ {% extends "dashboard/base.html" %}
+ {% load static %}
+{% block content %}
+{%load widget_tweaks%}
+{% include "dashboard/sidebar.html" %} 
+
+<main id="main" class="main">  
+    <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Job Post</h5>
+              <!-- Floating Labels Form -->
+                <form class="row g-3"  method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+
+                <div class="col-md-12">
+                  <div class="form-floating">
+                     {% render_field form.title class="form-control" id="floatingName"  %}
+                    <label for="floatingName">Title</label>
+                  </div>
+                </div>
+                   <div class="col-md-12">
+                  <div class="form-floating">
+                     {% render_field form.location class="form-control" id="floatingName"  %}
+                    <label for="floatingName">Location</label>
+                  </div>
+                </div>
+                  <div class="col-md-12">
+                    <div class="form-floating">
+                      {% render_field form.experience class="form-control" id="floatingName"  %}
+                      <label for="floatingName">Experience</label>
+                    </div>
+                  </div>
+          
+                 <div class="col-md-12 ">  
+                  <div class="form-floating mb-3 text-center">
+                    {% render_field form.about_role class="form-control" id="floatingName"  %}
+                    <label for="floatingName">About Role</label>
+                     <p class="text-warning ">*Add each Role on a new line</p>
+                  </div>
+                  </div>
+               
+                   <div class="col-md-12 ">  
+                  <div class="form-floating mb-3 text-center">
+                    {% render_field form.responsibilities class="form-control" id="floatingName"  %}
+                    <label for="floatingName">Responsibilities</label>
+                     <p class="text-warning ">*Add each Responsibilities on a new line</p>
+                  </div>
+                  </div>
+                   <div class="col-md-12 ">  
+                  <div class="form-floating mb-3 text-center">
+                    {% render_field form.skills class="form-control" id="floatingName"  %}
+                    <label for="floatingName">Skills</label>
+                     <p class="text-warning ">*Add each skill on a new line</p>
+                  </div>
+                  </div>
+                  <div class="col-md-12 ">  
+                  <div class="form-floating mb-3 text-center">
+                    {% render_field form.benefits class="form-control" id="floatingName"  %}
+                    <label for="floatingName">Benefits</label>
+                     <p class="text-warning ">*Add each Benefits on a new line</p>
+                  </div>
+                  </div>
+                   <div class="col-md-12 ">  
+                  <div class="form-floating mb-3 text-center">
+                    {% render_field form.qualifications class="form-control" id="floatingName"  %}
+                    <label for="floatingName">Qualifications</label>
+                     <p class="text-warning ">*Add each skill on a new line</p>
+                  </div>
+                  </div>
+                        <div class="col-md-12 ">
+                  <div class="form-floating mb-3 text-center">
+                    {% render_field form.employment_type class="form-select" id="floatingName"  %}
+                    <label for="floatingName">Employment Type </label>
+                  </div>  
+                </div>
+                   <div class="col-md-12 ">  
+                  <div class="form-floating mb-3 text-center">
+                    {% render_field form.email class="form-control" id="floatingName"  %}
+                    <label for="floatingName">Email</label>
+                  </div>
+                  </div>
+                   <div class="col-md-12 ">  
+                  <div class="form-floating mb-3 text-center">
+                    {% render_field form.apply_link class="form-control" id="floatingName"  %}
+                    <label for="floatingName">Apply Link</label>
+                  </div>
+                  </div>
+                   <div class="col-md-12 ">  
+                  <div class="form-floating mb-3 text-center">
+                    {% render_field form.deadline type="date" class="form-control" id="floatingName"  %}
+                    <label for="floatingName">Deadline</label>
+                  </div>
+                  </div>
+                 <div class="col-md-12">
+                  
+                      <div class="form-check form-switch">
+                        {% render_field form.is_active class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" %} <label class="form-check-label" for="flexSwitchCheckDefault">Is Active</label>
+                    </div>
+                  </div>
+              
+                       {% if form.non_field_errors %}
+                        <div class="errorlist">
+                            {% for error in form.non_field_errors %}
+                                <p class="text-danger">{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                <div class="text-center">
+                  <button type="submit" class="btn btn-primary">Submit</button>
+                  <button type="reset" class="btn btn-secondary">Reset</button>
+                </div>
+              </form><!-- End floating Labels Form -->
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main><!-- End #main -->
+  {% endblock content %}

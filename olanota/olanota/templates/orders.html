@@ -1,0 +1,21 @@
+{% extends "base.html" %} {% load static %}{% load humanize %} {% block meta %}
+      <meta property="og:title" content="Olanota">
+    <meta property="og:description" content="Olanota political news crime news local state news central news government news">
+    <meta property="og:image" content="https://{{request.get_host}}{% static "images/logo2.png" %}">
+    <meta property="og:url" content="{{ request.build_absolute_uri }}">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Olanota">
+    <meta name="twitter:image" content="https://{{request.get_host}}{% static "images/logo2.png" %}">
+{% endblock meta %}{% block content %}
+<section>
+  <div class="container">
+    <ul class="contacts-list fl-wrap">
+        {% for items in orders %}
+      <li><a href="{{items.File.url}}" target="_blank">{{items.Order_title}}</a></li>
+      {% endfor%}
+    </ul>
+  </div>
+</section>
+<!-- section end -->
+{% endblock content %}

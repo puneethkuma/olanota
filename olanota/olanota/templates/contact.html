@@ -1,0 +1,186 @@
+{% extends "base.html" %} {% load static %}{% load humanize %} {% block meta %}
+    <meta property="og:title" content="Olanota">
+    <meta property="og:description" content="Olanota political news crime news local state news central news government news">
+    <meta property="og:image" content="https://{{request.get_host}}{% static "images/logo2.png" %}">
+    <meta property="og:url" content="{{ request.build_absolute_uri }}">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Olanota">
+    <meta name="twitter:image" content="https://{{request.get_host}}{% static "images/logo2.png" %}">
+{% endblock meta %}{% block content %}
+ <!--section   -->
+                    <section>
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="pr-subtitle prs_big">Contact Details</div>
+                                    <!--card-item -->
+                                    <ul class="contacts-list fl-wrap">
+                                       
+                                        <li><span><i class="fal fa-phone"></i> Phone : </span> <a href="#"> +91 1987456321</a></li>
+                                        <li><span><i class="fal fa-envelope"></i> General Enquiries  : </span> <a href="mailto:info@olanota.com"> info@olanota.com</a></li>
+                                        <li><span><i class="fal fa-envelope"></i> Editorial Department : </span> <a href="mailto:editor@olanota.com"> editor@olanota.com</a></li>
+                                        <li><span><i class="fal fa-envelope"></i> Advertisements & Business : </span> <a href="mailto:ads@olanota.com"> ads@olanota.com</a></li>
+                                        <li><span><i class="fal fa-envelope"></i> Technical / Reader Support : </span> <a href="mailto:support@olanota.com"> support@olanota.com</a></li>
+                                        <li><span><i class="fal fa-envelope"></i> Website Administration : </span> <a href="mailto:admin@olanota.com"> admin@olanota.com</a></li>
+                                    </ul>
+                                    <!--card-item end -->
+                                    <div class="contact-social fl-wrap">
+                                        <span class="cs-title">Find us on: </span>
+                                        <ul>
+                                            {% if settings.facebook_link %}
+                                            <li>
+                                                <a href="{{ settings.facebook_link }}" target="_blank">
+                                                    <i class="fab fa-facebook-f"></i>
+                                                </a>
+                                            </li>
+                                            {% endif %}
+
+                                            {% if settings.youtube_link %}
+                                            <li>
+                                                <a href="{{ settings.youtube_link }}" target="_blank">
+                                                    <i class="fab fa-youtube"></i>
+                                                </a>
+                                            </li>
+                                            {% endif %}
+
+                                            {% if settings.instagram_link %}
+                                            <li>
+                                                <a href="{{ settings.instagram_link }}" target="_blank">
+                                                    <i class="fab fa-instagram"></i>
+                                                </a>
+                                            </li>
+                                            {% endif %}
+
+                                            {% if settings.pinterest_link %}
+                                            <li>
+                                                <a href="{{ settings.pinterest_link }}" target="_blank">
+                                                    <i class="fab fa-pinterest-p"></i>
+                                                </a>
+                                            </li>
+                                            {% endif %}
+
+                                            {% if settings.linkedin_link %}
+                                            <li>
+                                                <a href="{{ settings.linkedin_link }}" target="_blank">
+                                                    <i class="fab fa-linkedin-in"></i>
+                                                </a>
+                                            </li>
+                                            {% endif %}
+
+                                            {% if settings.x_link %}
+                                            <li>
+                                                <a href="{{ settings.x_link }}" target="_blank">
+                                                    <i class="fab fa-x-twitter"></i>
+                                                </a>
+                                            </li>
+                                            {% endif %}
+
+                                            {% if settings.telegram_link %}
+                                            <li>
+                                                <a href="{{ settings.telegram_link }}" target="_blank">
+                                                    <i class="fab fa-telegram-plane"></i>
+                                                </a>
+                                            </li>
+                                            {% endif %}
+
+                                            {% if settings.whatsapp_link %}
+                                            <li>
+                                                <a href="{{ settings.whatsapp_link }}" target="_blank">
+                                                    <i class="fab fa-whatsapp"></i>
+                                                </a>
+                                            </li>
+                                            {% endif %}
+
+                                            {% if settings.threads_link %}
+                                            <li>
+                                                <a href="{{ settings.threads_link }}" target="_blank">
+                                                    <i class="fab fa-threads"></i>
+                                                </a>
+                                            </li>
+                                            {% endif %}
+
+                                            {% if settings.snapchat_link %}
+                                            <li>
+                                                <a href="{{ settings.snapchat_link }}" target="_blank">
+                                                    <i class="fab fa-snapchat-ghost"></i>
+                                                </a>
+                                            </li>
+                                            {% endif %}
+
+
+                                            {% if settings.reddit_link %}
+                                            <li>
+                                                <a href="{{ settings.reddit_link }}" target="_blank">
+                                                    <i class="fab fa-reddit-alien"></i>
+                                                </a>
+                                            </li>
+                                            {% endif %}
+
+                                            {% if settings.discord_link %}
+                                            <li>
+                                                <a href="{{ settings.discord_link }}" target="_blank">
+                                                    <i class="fab fa-discord"></i>
+                                                </a>
+                                            </li>
+                                            {% endif %}
+
+                                            {% if settings.github_link %}
+                                            <li>
+                                                <a href="{{ settings.github_link }}" target="_blank">
+                                                    <i class="fab fa-github"></i>
+                                                </a>
+                                            </li>
+                                            {% endif %}
+
+                                            {% if settings.dribbble_link %}
+                                            <li>
+                                                <a href="{{ settings.dribbble_link }}" target="_blank">
+                                                    <i class="fab fa-dribbble"></i>
+                                                </a>
+                                            </li>
+                                            {% endif %}
+
+                                            {% if settings.behance_link %}
+                                            <li>
+                                                <a href="{{ settings.behance_link }}" target="_blank">
+                                                    <i class="fab fa-behance"></i>
+                                                </a>
+                                            </li>
+                                            {% endif %}
+
+                                            {% if settings.arattai_link %}
+                                            <li>
+                                                <a href="{{ settings.arattai_link }}" target="_blank">
+                                                    <i class="fas fa-link"></i> <!-- No official icon, use generic link -->
+                                                </a>
+                                            </li>
+                                            {% endif %}
+                                        </ul>
+                                    </div>
+                                			
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="pad-con fl-wrap">
+                                        <div class="pr-subtitle prs_big">Drop us a line</div>
+                                    
+                                        <div id="contact-form" style="margin-top: 20px;">
+                                            <div id="message"></div>
+                                            <form  class="custom-form" action="php/contact.php" name="contactform" id="contactform">
+                                                <fieldset>
+                                                    <input type="text" name="name" id="name" placeholder="Your Name *" value=""/>
+                                                    <input type="text"  name="email" id="email" placeholder="Email Address*" value=""/>
+                                                    <textarea name="comments"  id="comments" cols="40" rows="3" placeholder="Your Message:"></textarea>
+                                                </fieldset>
+                                                <button class="btn   color-bg float-btn" id="submit">Send message <i class="fas fa-caret-right"></i></button>
+                                            </form>
+                                        </div>
+                                        <!-- contact form  end--> 					
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+                <!-- content  end-->
+{% endblock content %}

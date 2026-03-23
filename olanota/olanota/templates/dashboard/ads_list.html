@@ -1,0 +1,81 @@
+ {% extends "dashboard/base.html" %}
+ {% load static %}
+{% block content %}
+{% include "dashboard/sidebar.html" %} 
+
+<main id="main" class="main">  
+
+  <section class="section dashboard">
+     <div class="pagetitle">
+    <h1>Ads List</h1>
+    <nav>
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="#">Home</a></li>
+      <li class="breadcrumb-item active">Ads List</li>
+    </ol>
+    </nav>
+  </div><!-- End Page Title -->
+
+
+
+
+
+   <div
+        class="container-fluid bg-trasparent  p-3"
+        style="position: relative"
+      >
+        <div
+          class="row row-cols-1 row-cols-xs-2 row-cols-sm-2 row-cols-lg-4 g-3 "
+        >
+         
+        
+        {% for items in ads  %}
+        <div class="col ">
+            <div class="card h-100 p-4 shadow">
+              {% if items.image %}
+              <img
+              src="{{items.image.url}}"
+              class="img-fluid mb-3"
+                alt="..."
+                />
+                {% endif %}
+              <div class="text-center">
+                  <span class=" badge badge-lg bg-primary"
+                    >{{items.title}}</span
+                  >
+                  
+                  {% if items.link %}
+                  <a href="{{items.link}}" class="">
+                    {{items.link}}
+                  </a>
+                  {% endif %}
+                <div class="mt-3">
+                  {% if items.is_active and items.image%}
+                  <span class=" badge text-bg-success " 
+                  >Active</span>
+                  {% else %}
+                  
+                  <span class=" badge text-bg-danger " 
+                  >Not Active</span>
+
+                  {% endif %}
+                  
+                </div>
+                <div class="text-center mt-3">
+                  <a href="{% url "base:edit_ads" items.id %}" class="btn btn-sm btn-warning text-white">Edit Ads</a>
+                </div>
+              </div>
+            </div>
+          </div>
+   {% endfor %}
+        </div>
+      </div>
+ 
+
+     
+
+    </div>
+  </section>
+
+  </main><!-- End #main -->
+  {% endblock content %}

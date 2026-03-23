@@ -1,0 +1,163 @@
+  {% load humanize %}
+<div class="col-md-4">
+          <!-- sidebar   -->
+          <div class="sidebar-content fl-wrap fix-bar">
+            <!-- box-widget -->
+            <div class="box-widget fl-wrap">
+              <div class="box-widget-content">
+                <!-- content-tabs-wrap -->
+                <div class="content-tabs-wrap tabs-act tabs-widget fl-wrap">
+                  <div class="content-tabs fl-wrap">
+                    <ul class="tabs-menu fl-wrap no-list-style">
+                        <li class="current"><a href="#tab-resent">Recent News</a></li>
+                      <li >
+                        <a href="#tab-popular"> Popular News </a>
+                      </li>
+                    </ul>
+                  </div>
+                  <!--tabs -->
+                  <div class="tabs-container">
+                    <!--tab -->
+                    <div class="tab">
+                      <div id="tab-resent" class="tab-content first-tab">
+                        <div class="post-widget-container fl-wrap">
+
+
+                         {% for items in last_four %}
+                          <!-- post-widget-item -->
+                          <div class="post-widget-item fl-wrap">
+                            <div class="post-widget-item-media">
+                              <a href="{% url 'base:detail' items.slug items.pk %}l"
+                                ><img src="{{items.Image_1.url}}" alt=""
+                              /></a>
+                            </div>
+                            <div class="post-widget-item-content">
+                              <h4>
+                                <a href="{% url 'base:detail' items.slug items.pk %}"
+                                  >{{items.Title}}</a
+                                >
+                              </h4>
+                              <ul class="pwic_opt">
+                                <li>
+                                  <span
+                                    ><i class="far fa-clock"></i> {{items.Date|naturaltime}}</span
+                                  >
+                                </li>
+                              </ul>
+                            </div>
+                          </div>
+                          <!-- post-widget-item end -->
+                          {% endfor %}
+                        </div>
+                      </div>
+                    </div>
+                    <!--tab  end-->
+                    <!--tab -->
+                    <div class="tab">
+                      <div id="tab-popular" class="tab-content ">
+                        <div class="post-widget-container fl-wrap">
+                           {% for items in objects5 %}
+                          <!-- post-widget-item -->
+                          <div class="post-widget-item fl-wrap">
+                            <div class="post-widget-item-media">
+                              <a href="{% url 'base:detail' items.slug items.pk %}"
+                                ><img src="{{items.Image_1.url}}" alt=""
+                              /></a>
+                            </div>
+                            <div class="post-widget-item-content">
+                              <h4>
+                                <a href="post-single.html"
+                                  >{{items.Title}}</a
+                                >
+                              </h4>
+                              <ul class="pwic_opt">
+                                <li>
+                                  <span
+                                    ><i class="far fa-clock"></i> {{items.Date|naturaltime}}</span
+                                  >
+                                </li>
+                              </ul>
+                            </div>
+                          </div>
+                          <!-- post-widget-item end -->
+                          {% endfor %}
+                        </div>
+                      </div>
+                    </div>
+                    <!--tab end-->
+                  </div>
+                  <!--tabs end-->
+                </div>
+                <!-- content-tabs-wrap end -->
+              </div>
+            </div>
+            <!-- box-widget  end -->
+            <!-- box-widget -->
+            <div class="box-widget fl-wrap">
+              <div class="box-widget-content">
+                <div id="weather-widget" class="ideaboxWeather"></div>
+              </div>
+            </div>
+            <!-- box-widget  end -->
+         
+            <!-- box-widget -->
+            <div class="box-widget fl-wrap">
+              <div class="widget-title">Popular Tags</div>
+              <div class="box-widget-content">
+                <div class="tags-widget">
+                      {% for tag in tags %}
+              <a href="/list/?q={{tag.slug}}" class="badge bg-primary">{{ tag.name }}</a>
+              {% empty %}
+              <span>No tags</span>
+              {% endfor %}
+              <a href="{% url 'base:tags' %}" class="badge bg-primary">More</a>
+            </div>
+              </div>
+            </div>
+            <!-- box-widget  end -->
+            <!-- box-widget -->
+            <div class="box-widget fl-wrap">
+              <div class="box-widget-content">
+                <div class="single-grid-slider slider_widget">
+                  <div class="slider_widget_title">Editor's Choice</div>
+                  <div class="swiper-container">
+                    <div class="swiper-wrapper">
+                      <!-- swiper-slide-->
+                       {% for items in objects9 %}
+                      <div class="swiper-slide">
+                        <div class="grid-post-item fl-wrap">
+                          <div class="grid-post-media gpm_sing">
+                            <div class="bg-wrap">
+                              <div class="bg" data-bg="{{items.Image_1.url}}"></div>
+                              <div class="overlay"></div>
+                            </div>
+                            <div class="grid-post-media_title">
+                              <a
+                                class="post-category-marker"
+                                href="/list/?cat={{items.Category}}"
+                                >{{items.Category}}</a
+                              >
+                              <h4>
+                                <a href="{% url 'base:detail' items.slug items.pk %}"
+                                  >{{items.Title}}</a
+                                >
+                              </h4>
+                              <span class="video-date"
+                                ><i class="far fa-clock"></i>{{items.Date|naturaltime}}</span
+                              >
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- swiper-slide end-->
+                     {% endfor %}
+                    </div>
+                    <div class="sgs-pagination sgs_hor"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- box-widget  end -->
+          </div>
+          <!-- sidebar  end -->
+        </div>

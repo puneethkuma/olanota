@@ -1,0 +1,30 @@
+{% extends "base.html" %} {% load static %}{% block meta %}
+     <meta property="og:title" content="Olanota">
+    <meta property="og:description" content="Olanota political news crime news local state news central news government news">
+    <meta property="og:image" content="https://{{request.get_host}}{% static "images/logo2.png" %}">
+    <meta property="og:url" content="{{ request.build_absolute_uri }}">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Olanota">
+    <meta name="twitter:image" content="https://{{request.get_host}}{% static "images/logo2.png" %}">
+{% endblock meta %} {% block content %}
+   <!-- box-widget -->
+    <section>
+    <div class="content">
+            <div class="box-widget fl-wrap">
+              <div class="widget-title">Popular Tags</div>
+              <div class="box-widget-content">
+                <div class="tags-widget">
+            {% for tag in tags %}
+              <a href="/list/?q={{tag.slug}}" class="badge bg-primary">{{ tag.name }}</a>
+              {% empty %}
+              <span>No tags</span>
+              {% endfor %}
+            </div>
+              </div>
+            </div>
+            </div>
+          </section>
+        </div>
+            <!-- box-widget  end -->
+{% endblock content %}

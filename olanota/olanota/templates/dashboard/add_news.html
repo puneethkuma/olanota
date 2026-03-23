@@ -1,0 +1,108 @@
+ {% extends "dashboard/base.html" %}
+ {% load static %}
+{% block content %}
+{%load widget_tweaks%}
+{% include "dashboard/sidebar.html" %} 
+<main id="main" class="main">  
+  <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">News</h5>
+              <!-- Floating Labels Form -->
+                <form class="row g-3"  method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                <div class="col-md-12">
+                  <div class="form-floating">
+                     {% render_field form.Title class="form-control" id="floatingName"  %}
+                    <label for="floatingName">Title</label>
+                  </div>
+                </div>
+                   <div class="col-md-12">
+                  <div class="form-floating">
+                     {% render_field form.Sub_heading class="form-control" id="floatingName"  %}
+                    <label for="floatingName">Sub Heading</label>
+                  </div>
+                </div>
+                  <div class="col-md-12">
+                    <div class="form-floating">
+                      {% render_field form.Description class="form-control" id="floatingName" style="height: 250px;" %}
+                      <label for="floatingName">Description</label>
+                    </div>
+                  </div>
+                      <div class="col-md-12">
+                    <div class="form-floating">
+                      {% render_field form.slug class="form-control" id="floatingName"  %}
+                      <label for="floatingName">slug</label>
+                      <small class="text-muted">Example : todays-news</small>
+                    </div>
+                  </div>
+                  <div class="col-md-12">
+                        <div class="form-floating">
+                      {% render_field form.tags class="form-control" id="floatingName"  %}
+                      <label for="floatingName">Tags</label>
+                          <small class="text-muted">Enter tags separated by commas (e.g. politics, economy, india)</small>
+
+                    </div>
+              </div>
+                <div class="col-md-6 ">
+                  <div class="form-floating mb-3 text-center">
+                    {% render_field form.Location class="form-select" id="floatingSelect"  %}
+                    <label for="floatingSelect">Location</label>
+                  </div>  
+                </div>
+                 <div class="col-md-6 ">  
+                  <div class="form-floating mb-3 text-center">
+                    {% render_field form.Category class="form-select" id="floatingSelect"  %}
+                    <label for="floatingSelect">Category</label>
+                  </div>
+                  </div>
+                <div class="row mb-3">
+                  <label for="Image_1" class="col-sm-2 col-form-label">Image 1</label>
+                  <div class="col-sm-10">
+                    {% render_field form.Image_1 class="form-control" type="file" id="Image_1" %}
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <label for="Image_2" class="col-sm-2 col-form-label">Image 2</label>
+                  <div class="col-sm-10">
+                    {% render_field form.Image_2 class="form-control" type="file" id="Image_2" %}
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <label for="Image_3" class="col-sm-2 col-form-label">Image 3</label>
+                  <div class="col-sm-10">
+                    {% render_field form.Image_3 class="form-control" type="file" id="Image_3" %}
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <label for="Image_4" class="col-sm-2 col-form-label">Image 4</label>
+                  <div class="col-sm-10">
+                    {% render_field form.Image_4 class="form-control" type="file" id="Image_4" %}
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <label for="Image_5" class="col-sm-2 col-form-label">Image 5</label>
+                  <div class="col-sm-10">
+                    {% render_field form.Image_5 class="form-control" type="file" id="Image_5" %}
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <label for="Image_6" class="col-sm-2 col-form-label">Image 6</label>
+                  <div class="col-sm-10">
+                    {% render_field form.Image_6 class="form-control" type="file" id="Image_6" %}
+                  </div>
+                </div>
+
+                <div class="text-center">
+                  <button type="submit" class="btn btn-primary">Submit</button>
+                  <button type="reset" class="btn btn-secondary">Reset</button>
+                </div>
+              </form><!-- End floating Labels Form -->
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main><!-- End #main -->
+  {% endblock content %}

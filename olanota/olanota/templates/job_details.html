@@ -1,0 +1,89 @@
+{% extends "base.html" %} {% load static %}{% load humanize %}{% block meta %}
+       <meta property="og:title" content="Olanota">
+    <meta property="og:description" content="Olanota political news crime news local state news central news government news">
+    <meta property="og:image" content="https://{{request.get_host}}{% static "images/logo2.png" %}">
+    <meta property="og:url" content="{{ request.build_absolute_uri }}">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Olanota">
+    <meta name="twitter:image" content="https://{{request.get_host}}{% static "images/logo2.png" %}">
+{% endblock meta %} {% block content %}
+      <!-- table end -->
+                                       
+                                                <!-- table end -->	
+                                                 <div class="col-md-12  ">
+                                    <div class="left_fix-bar fl-wrap">
+                                        <div class="profile-card-wrap fl-wrap">
+                                           
+                                             
+                                            <div class="profile-card_content">
+                                                <h4>Position: {{ post.title }}</h4>
+                                                    
+                                                <p>About the Role:{{ post.about_role }}</p>
+                                                <div class="pc_contacts">
+                                                    <ul>
+                                                        <li>
+                                                            <span>Location:</span> <a href="#">{{ post.location }} </a>
+                                                        </li>
+                                                        <li><span>Experience:</span> <a href="#">{{ post.experience }}</a></li>
+                                                        <li><span>Employment Type:</span> <a href="#">{{ post.employment_type }}</a></li>
+                                                        <li><span>Experience:</span> <a href="#">{{ post.employment_type }}</a></li>
+                                                        <li><span>Experience:</span> <a href="#">{{ post.experience }}</a></li>
+                                                        <li><span>Experience:</span> <a href="#">{{ post.experience }}</a></li>
+                                                        <li><span>Experience:</span> <a href="#">{{ post.experience }}</a></li>
+                                                        <li>    
+                                                            <span>Key Responsibilities:</span>
+                                                            
+                                                            <ul>
+                                                                {% for r in post.get_responsibilities_list %}
+                                                                <li>{{ r }}</li>
+                                                                {% endfor %}
+                                                            </ul>
+                                                        </li> <li>
+                                                            <span>Required Skills:</span>
+                                                            <ul>
+                                                                {% for s in post.get_skills_list %}
+                                                                <li>{{ s }}</li>
+                                                                {% endfor %}
+                                                            </ul>
+                                                        </li> <li>
+                                                            <span>Qualifications:</span>
+                                                            <ul>
+                                                                {% for q in post.get_qualifications_list %}
+                                                                <li>{{ q }}</li>
+                                                                {% endfor %}
+                                                            </ul>
+                                                        </li> <li>
+                                                            <span>Perks & Benefits:</span>
+                                                            <ul>
+                                                                {% for b in post.get_benefits_list %}
+                                                                <li>{{ b }}</li>
+                                                                {% endfor %}
+                                                            </ul>
+                                                        </li>
+                                                        <li><span> Deadline:</span> <a href="#"> {{ post.deadline|date:"d/m/Y" }}</a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="profile-card-footer fl-wrap">
+                                            <div class="title">How to Apply:</div>
+                                            <p>📧 Send your updated resume to <a href="mailto:{{post.email}}" class="text-link">{{ post.email }}</a></p>
+
+                                            {% if post.apply_link %}
+                                            <p>🌐 Apply online at <a href="{{ post.apply_link }}" class="more_btn" target="_blank">Apply</a></p>
+                                            {% endif %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+
+
+  
+
+
+
+
+{% endblock content %}

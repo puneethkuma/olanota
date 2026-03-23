@@ -1,0 +1,109 @@
+ {% extends "dashboard/base.html" %}
+ {% load static %}
+{% block content %}
+{%load widget_tweaks%}
+{% include "dashboard/sidebar.html" %} 
+
+<main id="main" class="main">  
+    <div class="card">
+            <div class="card-body">
+              <h5 class="card-title"> Add Author</h5>
+              <!-- Floating Labels Form -->
+                <form class="row g-3" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    <!-- Username -->
+    <div class="col-md-12">
+        <div class="form-floating">
+            {% render_field form.username class="form-control" id="floatingUsername" placeholder="Username" %}
+            <label for="floatingUsername">Username</label>
+        </div>
+    </div>
+
+    <!-- First Name -->
+    <div class="col-md-6">
+        <div class="form-floating">
+            {% render_field form.first_name class="form-control" id="floatingFirstName" placeholder="First Name" %}
+            <label for="floatingFirstName">First Name</label>
+        </div>
+    </div>
+
+    <!-- Last Name -->
+    <div class="col-md-6">
+        <div class="form-floating">
+            {% render_field form.last_name class="form-control" id="floatingLastName" placeholder="Last Name" %}
+            <label for="floatingLastName">Last Name</label>
+        </div>
+    </div>
+
+    <!-- Email -->
+    <div class="col-md-12">
+        <div class="form-floating">
+            {% render_field form.email class="form-control" id="floatingEmail" placeholder="Email" %}
+            <label for="floatingEmail">Email</label>
+        </div>
+    </div>
+
+    <!-- Password -->
+    <div class="col-md-6">
+        <div class="form-floating">
+            {% render_field form.password1 class="form-control" id="floatingPassword1" placeholder="Password" %}
+            <label for="floatingPassword1">Password</label>
+        </div>
+    </div>
+
+    <!-- Confirm Password -->
+    <div class="col-md-6">
+        <div class="form-floating">
+            {% render_field form.password2 class="form-control" id="floatingPassword2" placeholder="Confirm Password" %}
+            <label for="floatingPassword2">Confirm Password</label>
+        </div>
+    </div>
+
+    <!-- Phone -->
+    <div class="col-md-12">
+        <div class="form-floating">
+            {% render_field form.phone class="form-control" id="floatingPhone" placeholder="Phone" %}
+            <label for="floatingPhone">Phone</label>
+        </div>
+    </div>
+
+    <!-- Bio -->
+    <div class="col-md-12">
+        <div class="form-floating">
+            {% render_field form.bio class="form-control" id="floatingBio" placeholder="Bio" %}
+            <label for="floatingBio">Bio</label>
+        </div>
+    </div>
+
+    <!-- Profile Image -->
+    <div class="col-md-12">
+        <label for="Image_1" class="form-label">Profile Image</label>
+        {% render_field form.profile_image class="form-control" type="file" id="Image_1" %}
+    </div>
+     <!-- Profile Image -->
+    <div class="col-md-12">
+    <div class="form-check form-switch">
+
+        <label for="admin" class="form-check-label">Admin Access</label>
+        {% render_field form.is_superuser class="form-check-input" id="admin" %}
+        <br>
+         <small class="text-muted">Not Check this on to every one this will give all Access </small>
+    </div>
+    </div>
+    <!-- Submit Button -->
+    <div class="text-center mt-3">
+        <button type="submit" class="btn btn-primary">Register Author</button>
+        <button type="reset" class="btn btn-secondary">Reset</button>
+    </div>
+</form>
+
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main><!-- End #main -->
+  {% endblock content %}

@@ -1,0 +1,63 @@
+ {% extends "base.html" %} {% load static %} {% load humanize %}{% block meta %}
+    <meta property="og:title" content="Olanota">
+    <meta property="og:description" content="Olanota political news crime news local state news central news government news">
+    <meta property="og:image" content="https://{{request.get_host}}{% static "images/logo2.png" %}">
+    <meta property="og:url" content="{{ request.build_absolute_uri }}">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Olanota">
+    <meta name="twitter:image" content="https://{{request.get_host}}{% static "images/logo2.png" %}">
+{% endblock meta %}{% block content %}
+<section>
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <div class="main-container fl-wrap fix-container-init">
+                                        
+                                        <div class="list-post-wrap">
+                                       
+                                            <!--list-post end-->					
+                                            <!--list-post-->
+                                             {% for items in all_post %}	
+                                            <div class="list-post fl-wrap">
+                                                <div class="list-post-media">
+                                                    <a href="{% url 'base:detail' items.slug items.pk %}">
+                                                        <div class="bg-wrap">
+                                                            <div class="bg" data-bg="{{items.Image_1.url}}"></div>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                                <div class="list-post-content">
+                                                    <a class="post-category-marker" href="/list/?cat={{items.Category}}">{{items.Category}}</a>
+                                                    <h3><a href="{% url 'base:detail' items.slug items.pk %}">{{items.Title}}</a></h3>
+                                                    <span class="post-date"><i class="far fa-clock"></i> {{items.Date}}</span>
+                                                    <p>{{items.Sub_heading|linebreaks}}  </p>
+                                                   
+                                                   
+                                                </div>
+                                            </div>
+                                            <!--list-post end-->
+                                            {% endfor %}
+                                           				
+                                        </div>
+                                        <div class="clearfix"></div>
+                                        <!--pagination-->
+                                        <div class="pagination">
+                                             {%if all_post.has_previous %} 
+                                            <a href="?page={{all_post.previous_page_number}}" class="prevposts-link"><i class="fas fa-caret-left"></i></a>
+                                            {% endif %}
+                                            <a href="#" class="current-page">{{all_post.number}}</a>
+                                            {%if all_post.has_next %} 
+                                            <a href="?page={{all_post.next_page_number}}" class="nextposts-link"><i class="fas fa-caret-right"></i></a>
+                                            {% endif %}
+                                        </div>
+                                        <!--pagination end-->					
+                                    </div>
+                                </div>
+                                {% include "sidebar.html" %} 
+                            </div>
+                            <div class="limit-box fl-wrap"></div>
+                        </div>
+                    </section>
+                    <!-- section end -->
+                     {% endblock content %}

@@ -1,0 +1,33 @@
+{% extends "base.html" %} {% load static %}{% load humanize %} {% block meta %}
+    <meta property="og:title" content="Olanota">
+    <meta property="og:description" content="Olanota political news crime news local state news central news government news">
+    <meta property="og:image" content="https://{{request.get_host}}{% static "images/logo2.png" %}">
+    <meta property="og:url" content="{{ request.build_absolute_uri }}">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Olanota">
+    <meta name="twitter:image" content="https://{{request.get_host}}{% static "images/logo.png" %}">
+{% endblock meta %}{% block content %}
+
+<div class="content">
+ 
+      <section>
+        <div class="section-title">
+              <h2>Latest Youtube Videos</h2>
+              <h4>Subscribe Our Youtube Channel</h4>
+            </div>
+        <div class="row ">
+          {% for items in youtube %}
+          <div class="col-md-6 youtube">
+    {{items.youtube_url|safe}}
+  </div>
+    {%endfor%}
+    </div>
+  </section>
+</div>
+ 
+
+{% endblock content %}
+
+
+

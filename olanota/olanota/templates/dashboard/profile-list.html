@@ -1,0 +1,71 @@
+ {% extends "dashboard/base.html" %}
+ {% load static %}
+{% block content %}
+{% include "dashboard/sidebar.html" %} 
+
+<main id="main" class="main">  
+
+
+  <section class="section dashboard">
+     <div class="pagetitle">
+    <h1>Author List</h1>
+    <nav>
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="#">Home</a></li>
+      <li class="breadcrumb-item active">ads List</li>
+    </ol>
+    </nav>
+  </div><!-- End Page Title -->
+
+
+
+
+ 
+
+     
+
+    </div>
+
+
+<div class="container">
+   
+    <div class="row">
+                {% for items in author %}
+        <div class="col-xl-3 col-sm-6">
+            <div class="card">
+                <div class="card-body">
+              
+                    <div class="d-flex align-items-center pt-3">
+                        <div>
+                            {% if items.profile_image %}
+                            <img src="{{items.profile_image.url}}" alt="" class="avatar-md rounded-circle img-thumbnail" />
+                            {% endif %}
+                        </div>
+                    </div>
+                        <div class="flex-1 ms-3 mt-4">
+                            <h5 class="fw-bold mb-1"><a href="#" class="text-dark fw-dark">{{items}}</a></h5>
+                        </div>
+                    <div class="mt-3 pt-1">
+                        <p class="text-muted mb-0"><i class="mdi mdi-phone font-size-15 align-middle pe-2 text-primary"></i> {{items.phone|default:""}}</p>
+                        <p class="text-muted mb-0 mt-2"><i class="mdi mdi-email font-size-15 align-middle pe-2 text-primary"></i> {{items.email|default:""}}</p>
+                     
+                    </div>
+                    <div class="d-flex gap-2 pt-4">
+                        <td><a href="{% url "base:profile_detail" items.user.id %}" class="badge bg-success"><i class="bi bi-eye"></i> View</a></td>
+             <td><a href="{% url "base:delete_user" items.user.id %}" class="badge bg-danger"><i class="bi bi-trash"></i> Delete</a></td>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+      
+     
+    </div>
+   
+</div>
+
+</div>
+  </section>
+
+  </main><!-- End #main -->
+  {% endblock content %}

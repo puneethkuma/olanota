@@ -1,0 +1,584 @@
+{% load static %}
+
+<!DOCTYPE HTML>
+<html lang="">
+
+<head>
+    <!--=============== basic  ===============-->
+    <meta charset="UTF-8">
+    <title>Olanota </title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords"
+        content="Olanota  news political news crime news local state news central news government news" />
+    <meta name="description"
+        content="Olanota  news political news crime news local state news central news government news" />
+    <!--=============== css  ===============-->
+    <link type="text/css" rel="stylesheet" href="{% static "css/plugins.css" %}">
+    <link type="text/css" rel="stylesheet" href="{% static "css/style.css" %}">
+    <link type="text/css" rel="stylesheet" href="{% static "css/color.css" %}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!--=============== favicons ===============-->
+    <link rel="shortcut icon" href="{% static "images/favicon.ico" %}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static "images/apple-touch-icon.png" %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static "images/favicon-32x32.png" %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static "images/favicon-16x16.png" %}">
+    <link rel="manifest" href="{% static "images/site.webmanifest" %}">
+
+    <!-- Page-specific Meta -->
+    {% block meta %}{% endblock meta %}
+</head>
+
+<body>
+    <script>
+function googleTranslateElementInit() {
+var translator = new google.translate.TranslateElement({
+pageLanguage: 'ml',
+// layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+}, 'google_translate_element');
+  }
+//   function googleTranslateElementInit() {
+//   new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');}
+</script>
+<script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <!-- main start  -->
+   
+    <div id="main">
+        <!-- progress-bar  -->
+         
+        <div class="progress-bar-wrap">
+            
+            <div class="progress-bar color-bg"></div>
+            
+        </div>
+        
+        <!-- progress-bar end -->
+        <!-- header -->
+           <div class="">
+      {% if top_ads.image %}
+        <a href="{{ top_ads.link }}" target="_blank" class="ad-link">
+          <img src="{{ top_ads.image.url }}" alt="{{ top_ads.title }}"   style="width: 100%;">
+        </a>
+      {% endif %}
+    </div>
+        <header class="main-header ">
+            <!-- top bar -->
+             
+            <div class="top-bar fl-wrap">
+                <div class="container">
+                   
+                    <div class="header_news-ticker-wrap">
+                        <div class="hnt_title">Flash News :</div>
+                        <div class="header_news-ticker fl-wrap">
+                            <ul>
+                                {% for items in last_four %}
+                                <li><a href="{% url 'base:detail' items.slug items.pk %}">{{items.Title}}</a></li>
+                                {% endfor %}
+                               
+                            </ul>
+                        </div>
+                        <div class="n_contr-wrap">
+                            <div class="n_contr p_btn"><i class="fas fa-caret-left"></i></div>
+                            <div class="n_contr n_btn"><i class="fas fa-caret-right"></i></div>
+                        </div>
+                    </div>
+                     <div class="date-holder">
+                        <span class="date_num"></span>
+                        <span class="date_mounth"></span>
+                        <span class="date_year"></span>
+                    </div>
+                    <div class="date-holder time">
+                        <span id="time"></span>
+                    </div>
+                    <ul class="topbar-social">
+                        
+
+                            {% comment %} {% if settings.arattai_link %}
+                            <li>
+                                <a href="{{ settings.arattai_link }}" target="_blank">
+                                    <i class="fab fa-whatsapp"></i>
+                                </a>
+                            </li>
+                            {% endif %} {% endcomment %}
+                              {% if settings.whatsapp_link %}
+                            <li>
+                                <a href="{{ settings.whatsapp_link }}" target="_blank">
+                                    <i class="fab fa-whatsapp"></i>
+                                </a>
+                            </li>
+                            {% endif %}
+                              {% if settings.email %}
+                            <li>
+                                <a href="mailto:{{ settings.email }}" target="_blank">
+                                    <i class="fa fa-envelope"></i>
+                                </a>
+                            </li>
+                            {% endif %}
+                             {% if settings.phone_number %}
+                            <li>
+                                <a href="tel:{{ settings.phone_number }}" target="_blank">
+                                    <i class="fa fa-phone"></i>
+                                </a>
+                            </li>
+                            {% endif %}
+                
+                    </ul>
+                </div>
+            </div>
+            <!-- top bar end -->
+            <div class="header-inner fl-wrap">
+                <div class="container-fluid">
+                    <!-- logo holder  -->
+                    <a href="/" class="logo-holder"><img src="{% static "images/logo2.png" alt="" %}"></a>
+                    <!-- logo holder end -->
+                       <div class="search_btn htact show_search-btn"><i class="fa fa-search"></i> <span class="header-tooltip">Search</span></div>
+                           <div class="header-search-wrap novis_sarch">
+                            <div class="widget-inner">
+                                <form  action="{% url 'base:list' %}" method="get" >
+                                     <input type="text" id="se" name="q"  class="search" placeholder="Search news..." value="{{ request.GET.q }}">
+                                    <button class="search-submit" id="submit_btn"><i class="fa fa-search transition"></i> </button>
+                                </form>
+                            </div>
+                        </div>
+                    <!-- header-search-wrap end -->
+                    <!-- nav-button-wrap-->
+                    <div class="nav-button-wrap">
+                        <div class="nav-button">
+                            <span></span><span></span><span></span>
+                        </div>
+                    </div>
+                    <!-- nav-button-wrap end-->
+                    <!--  navigation -->
+                    <div class="nav-holder main-menu ">
+                        <nav>
+                            <ul >
+                                <li><a href="/">Home</a></li>
+                                <li><a href="/list/?loc=International">International</a></li>
+                                	<li class="">
+								<a class="" href="/list/?loc=India" > India<i class="fas fa-caret-down"></i> </a>
+								<ul >
+                                <li><a href="/list/?loc=Andhra Pradesh">Andhra Pradesh</a></li>
+                                <li><a href="/list/?loc=Arunachal Pradesh">Arunachal Pradesh</a></li>
+                                <li><a href="/list/?loc=Assam">Assam</a></li>
+                                <li><a href="/list/?loc=Bihar">Bihar</a></li>
+                                <li><a href="/list/?loc=Chhattisgarh">Chhattisgarh</a></li>
+                                <li><a href="/list/?loc=Goa">Goa</a></li>
+                                <li><a href="/list/?loc=Gujarat">Gujarat</a></li>
+                                <li><a href="/list/?loc=Haryana">Haryana</a></li>
+                                <li><a href="/list/?loc=Himachal Pradesh">Himachal Pradesh</a></li>
+                                <li><a href="/list/?loc=Jharkhand">Jharkhand</a></li>
+                                <li><a href="/list/?loc=Karnataka">Karnataka</a></li>
+                                <li><a href="/list/?loc=Kerala">Kerala</a></li>
+                                <li><a href="/list/?loc=Madhya Pradesh">Madhya Pradesh</a></li>
+                                <li><a href="/list/?loc=Maharashtra">Maharashtra</a></li>
+                                <li><a href="/list/?loc=Manipur">Manipur</a></li>
+                                <li><a href="/list/?loc=Meghalaya">Meghalaya</a></li>
+                                <li><a href="/list/?loc=Mizoram">Mizoram</a></li>
+                                <li><a href="/list/?loc=Nagaland">Nagaland</a></li>
+                                <li><a href="/list/?loc=Odisha">Odisha</a></li>
+                                <li><a href="/list/?loc=Punjab">Punjab</a></li>
+                                <li><a href="/list/?loc=Rajasthan">Rajasthan</a></li>
+                                <li><a href="/list/?loc=Sikkim">Sikkim</a></li>
+                                <li><a href="/list/?loc=Tamil Nadu">Tamil Nadu</a></li>
+                                <li><a href="/list/?loc=Telangana">Telangana</a></li>
+                                <li><a href="/list/?loc=Tripura">Tripura</a></li>
+                                <li><a href="/list/?loc=Uttar Pradesh">Uttar Pradesh</a></li>
+                                <li><a href="/list/?loc=Uttarakhand">Uttarakhand</a></li>
+                                <li><a href="/list/?loc=West Bengal">West Bengal</a></li>
+								</ul>
+							</li>
+                                  <li >
+								<a class="" href="/list/?loc=Kerala" >Kerala<i class="fas fa-caret-down"></i> </a>
+								<ul >
+								<li><a href="/list/?loc=Alappuzha">Alappuzha</a></li>
+                                <li><a href="/list/?loc=Ernakulam">Ernakulam</a></li>
+                                <li><a href="/list/?loc=Idukki">Idukki</a></li>
+                                <li><a href="/list/?loc=Kannur">Kannur</a></li>
+                                <li><a href="/list/?loc=Kasaragod">Kasaragod</a></li>
+                                <li><a href="/list/?loc=Kollam">Kollam</a></li>
+                                <li><a href="/list/?loc=Kottayam">Kottayam</a></li>
+                                <li><a href="/list/?loc=Kozhikode">Kozhikode</a></li>
+                                <li><a href="/list/?loc=Malappuram">Malappuram</a></li>
+                                <li><a href="/list/?loc=Palakkad">Palakkad</a></li>
+                                <li><a href="/list/?loc=Pathanamthitta">Pathanamthitta</a></li>
+                                <li><a href="/list/?loc=Thiruvananthapuram">Thiruvananthapuram</a></li>
+                                <li><a href="/list/?loc=Thrissur">Thrissur</a></li>
+                                <li><a href="/list/?loc=Wayanad">Wayanad</a></li>
+								</ul>
+							</li>
+                              <li >
+								<a class="" href="/list/?loc=Karnataka" >Karnataka<i class="fas fa-caret-down"></i> </a>
+								<ul >
+								<li><a href="/list/?loc=Bagalkot">Bagalkot</a></li>
+                                <li><a href="/list/?loc=Ballari (Bellary)">Ballari (Bellary)</a></li>
+                                <li><a href="/list/?loc=Belagavi (Belgaum)">Belagavi (Belgaum)</a></li>
+                                <li><a href="/list/?loc=Bengaluru Rural">Bengaluru Rural</a></li>
+                                <li><a href="/list/?loc=Bengaluru Urban">Bengaluru Urban</a></li>
+                                <li><a href="/list/?loc=Bidar">Bidar</a></li>
+                                <li><a href="/list/?loc=Chamarajanagara">Chamarajanagara</a></li>
+                                <li><a href="/list/?loc=Chikkaballapura">Chikkaballapura</a></li>
+                                <li><a href="/list/?loc=Chikkamagaluru">Chikkamagaluru</a></li>
+                                <li><a href="/list/?loc=Chitradurga">Chitradurga</a></li>
+                                <li><a href="/list/?loc=Dakshina Kannada">Dakshina Kannada</a></li>
+                                <li><a href="/list/?loc=Davanagere">Davanagere</a></li>
+                                <li><a href="/list/?loc=Dharwad">Dharwad</a></li>
+                                <li><a href="/list/?loc=Gadag">Gadag</a></li>
+                                <li><a href="/list/?loc=Hassan">Hassan</a></li>
+                                <li><a href="/list/?loc=Haveri">Haveri</a></li>
+                                <li><a href="/list/?loc=Kalaburagi (Gulbarga)">Kalaburagi (Gulbarga)</a></li>
+                                <li><a href="/list/?loc=Kodagu">Kodagu</a></li>
+                                <li><a href="/list/?loc=Kolar">Kolar</a></li>
+                                <li><a href="/list/?loc=Koppal">Koppal</a></li>
+                                <li><a href="/list/?loc=Mandya">Mandya</a></li>
+                                <li><a href="/list/?loc=Mysuru (Mysore)">Mysuru (Mysore)</a></li>
+                                <li><a href="/list/?loc=Raichur">Raichur</a></li>
+                                <li><a href="/list/?loc=Ramanagara">Ramanagara</a></li>
+                                <li><a href="/list/?loc=Shivamogga (Shimoga)">Shivamogga (Shimoga)</a></li>
+                                <li><a href="/list/?loc=Tumakuru (Tumkur)">Tumakuru (Tumkur)</a></li>
+                                <li><a href="/list/?loc=Udupi">Udupi</a></li>
+                                <li><a href="/list/?loc=Uttara Kannada">Uttara Kannada</a></li>
+                                <li><a href="/list/?loc=Vijayanagara">Vijayanagara</a></li>
+                                <li><a href="/list/?loc=Vijayapura (Bijapur)">Vijayapura (Bijapur)</a></li>
+                                <li><a href="/list/?loc=Yadgiri">Yadgiri</a></li>
+								</ul>
+							</li>
+                               
+                                <li><a href="/list/?cat=Politics">politics</a></li>
+                                {% if settings.show_jobs %}
+                                <li><a href="{% url "base:job"%}">Jobs</a></li>
+                                {% endif %}
+                                <li><a href="/list/?cat=education">Education</a></li>
+                                <li><a href="/list/?cat=lifestyle">Lifestyle</a></li>
+                                {% if settings.show_youtube  %}
+                                <li><a href="{% url "base:youtube"%}">Youtube</a></li>
+                                {% endif %}
+                                <li><a><div id="google_translate_element"></div>  </a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                    <!-- navigation  end -->
+                     <p class="nav-middle-txt"><a href="/">OLANOTA</p>
+                </div>
+            </div>
+        </header>
+        <div class="ads-slider">
+                <div class="swiper-wrapper">
+                <!-- swiper-slide -->
+                {% for ads in slider_ads  %}
+                {% if ads.image %}
+                <div class="swiper-slide">
+                    <a href="{{ ads.link }}" target="_blank" class="ad-link">
+                    <img src="{{ ads.image.url }}" alt="{{ ads.title }}" class="slider-img"  style="width: 100%;">
+                </a>
+            </div>
+            {% endif %}
+                <!-- swiper-slide  end   -->
+                {% endfor %}
+                </div>
+                
+                </div>
+             <div id="wrapper" class="gray-bg">
+
+                
+                   
+                    <!-- hero-slider-wrap  end   -->
+        <!-- header end  -->
+         
+         
+
+<div class="box-ads">
+        <div class="col-md-2 first">
+                    {% for ads in left_ads  %}
+                    {% if ads.image %}
+                    <a href="{{ ads.link }}" target="_blank" class="ad-link">
+                        <img src="{{ ads.image.url }}" alt="{{ ads.title }}"  style="width: 100%;">
+                    </a>
+                    {% endif %}
+                    {% endfor %}
+            </div> 
+   
+    <!-- content  -->
+       <div class="col-md-8 secound">
+         {% block content %}{% endblock content %}
+       
+        </div>
+        <div class="col-md-2 third">
+              {% for ads in right_ads  %}
+                    {% if ads.image %}
+                    <a href="{{ ads.link }}" target="_blank" class="ad-link">
+                        <img src="{{ ads.image.url }}" alt="{{ ads.title }}"  style="width: 100%;">
+                    </a>
+                    {% endif %}
+                    {% endfor %}
+                  
+              
+        </div>
+</div>
+ <div class="" style=" margin-bottom: 20px;">
+      {% if ads5.image %}
+        <a href="{{ ads5.link }}" target="_blank" class="ad-link">
+          <img src="{{ ads5.image.url }}" alt="{{ ads5.title }}"  style="width: 100%;">
+        </a>
+      {% endif %}
+    </div>
+   <!-- footer -->
+   
+            <footer class="fl-wrap main-footer">
+                   <div class="visitors">
+                <h1> Website visitors -
+                    <span>
+                        {{total_visitors}}
+                    </span>
+                </h1>
+            </div>
+                <div class="container">
+                      
+                    <!-- footer-widget-wrap -->
+                    <div class="footer-widget-wrap fl-wrap">
+                        <div class="row">
+                            <!-- footer-widget -->
+                            <div class="col-md-4">
+                                <div class="footer-widget">
+                                    <div class="footer-widget-content">
+                                        <a href="/" class="footer-logo"><img src="{% static "images/logo2.png" alt="" %}"></a>
+                                        <!-- <p>olanota</p> -->
+                                        <div class="footer-social fl-wrap">
+
+<ul>
+    {% if settings.facebook_link %}
+    <li>
+        <a href="{{ settings.facebook_link }}" target="_blank">
+            <i class="fab fa-facebook-f"></i>
+        </a>
+    </li>
+    {% endif %}
+
+    {% if settings.youtube_link %}
+    <li>
+        <a href="{{ settings.youtube_link }}" target="_blank">
+            <i class="fab fa-youtube"></i>
+        </a>
+    </li>
+    {% endif %}
+
+    {% if settings.instagram_link %}
+    <li>
+        <a href="{{ settings.instagram_link }}" target="_blank">
+            <i class="fab fa-instagram"></i>
+        </a>
+    </li>
+    {% endif %}
+
+    {% if settings.pinterest_link %}
+    <li>
+        <a href="{{ settings.pinterest_link }}" target="_blank">
+            <i class="fab fa-pinterest-p"></i>
+        </a>
+    </li>
+    {% endif %}
+
+    {% if settings.linkedin_link %}
+    <li>
+        <a href="{{ settings.linkedin_link }}" target="_blank">
+            <i class="fab fa-linkedin-in"></i>
+        </a>
+    </li>
+    {% endif %}
+
+    {% if settings.x_link %}
+    <li>
+        <a href="{{ settings.x_link }}" target="_blank">
+            <i class="fab fa-x-twitter"></i>
+        </a>
+    </li>
+    {% endif %}
+
+    {% if settings.telegram_link %}
+    <li>
+        <a href="{{ settings.telegram_link }}" target="_blank">
+            <i class="fab fa-telegram-plane"></i>
+        </a>
+    </li>
+    {% endif %}
+
+    {% if settings.whatsapp_link %}
+    <li>
+        <a href="{{ settings.whatsapp_link }}" target="_blank">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+    </li>
+    {% endif %}
+
+    {% if settings.threads_link %}
+    <li>
+        <a href="{{ settings.threads_link }}" target="_blank">
+            <i class="fab fa-threads"></i>
+        </a>
+    </li>
+    {% endif %}
+
+    {% if settings.snapchat_link %}
+    <li>
+        <a href="{{ settings.snapchat_link }}" target="_blank">
+            <i class="fab fa-snapchat-ghost"></i>
+        </a>
+    </li>
+    {% endif %}
+
+
+    {% if settings.reddit_link %}
+    <li>
+        <a href="{{ settings.reddit_link }}" target="_blank">
+            <i class="fab fa-reddit-alien"></i>
+        </a>
+    </li>
+    {% endif %}
+
+    {% if settings.discord_link %}
+    <li>
+        <a href="{{ settings.discord_link }}" target="_blank">
+            <i class="fab fa-discord"></i>
+        </a>
+    </li>
+    {% endif %}
+
+    {% if settings.github_link %}
+    <li>
+        <a href="{{ settings.github_link }}" target="_blank">
+            <i class="fab fa-github"></i>
+        </a>
+    </li>
+    {% endif %}
+
+    {% if settings.dribbble_link %}
+    <li>
+        <a href="{{ settings.dribbble_link }}" target="_blank">
+            <i class="fab fa-dribbble"></i>
+        </a>
+    </li>
+    {% endif %}
+
+    {% if settings.behance_link %}
+    <li>
+        <a href="{{ settings.behance_link }}" target="_blank">
+            <i class="fab fa-behance"></i>
+        </a>
+    </li>
+    {% endif %}
+
+    {% if settings.arattai_link %}
+    <li>
+        <a href="{{ settings.arattai_link }}" target="_blank">
+            <i class="fas fa-link"></i> <!-- No official icon, use generic link -->
+        </a>
+    </li>
+    {% endif %}
+</ul>
+
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- footer-widget  end-->
+                            <!-- footer-widget -->
+                            <div class="col-md-2">
+                                <div class="footer-widget">
+                                    <div class="footer-widget-title">Categories </div>
+                                    <div class="footer-widget-content">
+                                        <div class="footer-list footer-box fl-wrap">
+                                            <ul> 
+                                                <li><a href="/list/?loc=International">International</a></li>
+                                                <li><a href="/list/?loc=Kerala">Kerala</a></li>
+                                                <li><a href="/list/?loc=Karnataka">Karnataka</a></li>
+                                                <li><a href="/list/?cat=Politics">politics</a></li>
+                                                <li><a href="/list/?cat=jobs">Jobs</a></li>
+                                                <li><a href="/list/?cat=education">Education</a></li>
+                                                <li><a href="/list/?cat=lifestyle">Lifestyle</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- footer-widget  end-->
+                            <!-- footer-widget -->
+                            <div class="col-md-2">
+                                <div class="footer-widget">
+                                    <div class="footer-widget-title">Links</div>
+                                    <div class="footer-widget-content">
+                                        <div class="footer-list footer-box fl-wrap">
+                                            <ul>
+                                                <li><a href="/">Home</a></li>
+                                                <li><a href="{% url 'base:list' %}">News</a></li>
+                                                <li><a href="{% url 'base:news_rss' %}" target="_blank">RSS Feed</a></li>
+                                                <li><a href="{% url 'base:contact' %}">Contact </a></li>
+                                                <li><a href="{% url 'base:dashboard' %}">Dashboard </a></li>
+                                                <li><a href="{% url 'base:login' %}">Login </a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- footer-widget  end-->
+                            <!-- footer-widget -->
+                            <div class="col-md-4">
+                                <div class="footer-widget">
+                                    <div class="footer-widget-title">Contact</div>
+                                    <div class="footer-widget-content">
+                                         <div class="footer-list footer-box fl-wrap contact">
+                                          
+                                             <ul>
+                                                 <li><i class="fa fa-envelope"></i> General Enquiries:
+                                                  <br/>  <a href="mailto:info@olanota.com">info@olanota.com</a></li>
+                                                  <li><i class="fa fa-envelope"></i> Editorial Department:
+                                                  <br/>  <a href="mailto:editor@olanota.com">editor@olanota.com</a></li> 
+                                                     <li><i class="fa fa-envelope"></i> Advertisements & Business:
+                                                  <br/>  <a href="mailto:ads@olanota.com">ads@olanota.com</a></li>  
+                                                    <li><i class="fa fa-envelope"></i> Technical / Reader Support:
+                                                  <br/>  <a href="mailto:support@olanota.com">support@olanota.com</a></li>
+                                                    <li><i class="fa fa-envelope"></i> Website Administration:
+                                                  <br/>  <a href="mailto:admin@olanota.com">admin@olanota.com</a></li>
+
+                                          
+                                            </ul>
+                                    </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- footer-widget  end-->
+                        </div>
+                    </div>
+                    <!-- footer-widget-wrap end-->
+                </div>
+              
+                <div class="footer-bottom fl-wrap">
+                    <div class="container">
+                        <div class="copyright"><span>&#169; olanota  2026</span>.  All rights reserved. Powered by
+                            <a href="https://hashtocolon.com/"><span>Hashtocolon Systems</span></a>
+                        </div>
+                        <div class="to-top"> <i class="fas fa-caret-up"></i></div>
+                        <div class="subfooter-nav">
+                            <ul>
+                                <li><a href="{% url "base:tc"%}">Terms & Conditions</a></li>
+                                
+                                <li><a href="{% url "base:pp"%}">Privacy Policy</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+            <!-- footer end-->
+           
+        </div>
+        <!-- wrapper end -->
+        
+
+    </div>
+    <!-- Main end -->
+    <!--=============== scripts  ===============-->
+    <script src="{% static "/js/jquery.min.js" %}"></script>
+    <script src="{% static "/js/plugins.js" %}"></script>
+    <script src="{% static "/js/scripts.js" %}"></script>
+</body>
+
+</html>

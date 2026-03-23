@@ -1,0 +1,259 @@
+ {% extends "dashboard/base.html" %}
+ {% load static %}
+{% block content %}
+{% include "dashboard/sidebar.html" %} 
+
+<main id="main" class="main">  
+
+<div class="container dashboard-card">
+    <div class="row ">
+        <div class="col-xl-4 col-lg-4">
+            <div class="card l-bg-cherry">
+                <div class="card-statistic-3 p-4">
+                    <div class="card-icon card-icon-large"><i class="bi bi-newspaper"></i></div>
+                    <div >
+                        <h5 class="card-title mb-0">News Posted</h5>
+                    </div>
+                    <div class="row align-items-center mb-2 d-flex">
+                        <div class="col-8">
+                            <h2 class="d-flex align-items-center mb-0">
+                                {{total_news}}
+                            </h2>
+                        </div>
+                       
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-4 col-lg-4">
+            <div class="card l-bg-blue-dark">
+                <div class="card-statistic-3 p-4">
+                    <div class="card-icon card-icon-large"><i class="bi bi-file-spreadsheet-fill"></i></div>
+                    <div >
+                        <h5 class="card-title mb-0">Ads Posted</h5>
+                    </div>
+                    <div class="row align-items-center mb-2 d-flex">
+                        <div class="col-8">
+                            <h2 class="d-flex align-items-center mb-0">
+                                {{total_ads}}
+                            </h2>
+                        </div>
+                     
+                    </div>
+                  
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-4 col-lg-4">
+            <div class="card l-bg-green-dark">
+                <div class="card-statistic-3 p-4">
+                    <div class="card-icon card-icon-large"><i class="bi bi-journal-text"></i></div>
+                    <div >
+                        <h5 class="card-title mb-0">Job Posted</h5>
+                    </div>
+                    <div class="row align-items-center mb-2 d-flex">
+                        <div class="col-8">
+                            <h2 class="d-flex align-items-center mb-0">
+                                {{total_jobs}}
+                            </h2>
+                        </div>
+                      
+                    </div>
+                   
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-4 col-lg-4">
+            <div class="card l-bg-orange-dark">
+                <div class="card-statistic-3 p-4">
+                    <div class="card-icon card-icon-large"><i class="bi bi-youtube"></i></div>
+                    <div >
+                        <h5 class="card-title mb-0">Videos Posted</h5>
+                    </div>
+                    <div class="row align-items-center mb-2 d-flex">
+                        <div class="col-8">
+                            <h2 class="d-flex align-items-center mb-0">
+                               {{total_videos}}
+                            </h2>
+                        </div>
+                        
+                    </div>
+                  
+                </div>
+            </div>
+        </div>
+          <div class="col-xl-4 col-lg-4">
+            <div class="card l-bg-purple-dark">
+                <div class="card-statistic-3 p-4">
+                    <div class="card-icon card-icon-large"><i class="bi bi-headset-vr"></i></div>
+                    <div >
+                        <h5 class="card-title mb-0">Website Visitors</h5>
+                    </div>
+                    <div class="row align-items-center mb-2 d-flex">
+                        <div class="col-8">
+                            <h2 class="d-flex align-items-center mb-0">
+                               {{total_visitors}}
+                            </h2>
+                        </div>
+                        
+                    </div>
+                  
+                </div>
+            </div>
+        </div>  <div class="col-xl-4 col-lg-4">
+            <div class="card l-bg-cyan-dark">
+                <div class="card-statistic-3 p-4">
+                    <div class="card-icon card-icon-large"><i class="bi bi-file-person-fill"></i></div>
+                    <div >
+                        <h5 class="card-title mb-0">Total Authors</h5>
+                    </div>
+                    <div class="row align-items-center mb-2 d-flex">
+                        <div class="col-8">
+                            <h2 class="d-flex align-items-center mb-0">
+                               {{total_author}}
+                            </h2>
+                        </div>
+                        
+                    </div>
+                  
+                </div>
+            </div>
+        </div>
+
+  <section class="section dashboard">
+     <div class="pagetitle">
+    <h1>Dashboard</h1>
+    <nav>
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="{% url 'base:dashboard' %}">Home</a></li>
+      <li class="breadcrumb-item active">Dashboard</li>
+    </ol>
+    </nav>
+  </div><!-- End Page Title -->
+    <div class="row">
+
+    <!-- Left side columns -->
+    <div class="col-lg-12">
+      <div class="row">
+
+      <!-- Sales Card -->
+      <div class="col-xxl-4 col-md-6">
+        <div class="card info-card sales-card bg-primary">
+
+        <div class="filter">
+          <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+      
+        </div>
+
+        <a  class="card-body" href="{% url 'base:add_news' %}">
+          <h5 class="card-title text-white">News </h5>
+          <div class="d-flex align-items-center">
+          <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+            <i class="bi bi-plus-circle"></i>
+          </div>
+          <div class="ps-3">
+            <span class="text-white small pt-1 fw-bold">Add</span> 
+            <h6 class="text-white">News</h6>
+
+          </div>
+          </div>
+        </a>
+
+        </div>
+      </div><!-- End Sales Card -->
+{% if user.is_superuser %}
+<!-- Revenue Card -->
+<div class="col-xxl-4 col-md-6">
+  <div class="card info-card revenue-card bg-success">
+
+        <div class="filter">
+          <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+            
+          </ul>
+        </div>
+        
+        <a href="{% url 'base:ads_list' %}" class="card-body">
+          <h5 class="card-title text-white">Ads </h5>
+          
+          <div class="d-flex align-items-center">
+            <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+              <i class="bi bi-plus-square"></i>
+            </div>
+            <div class="ps-3">
+              <span class="text-white small pt-1 fw-bold">Add</span>
+              <h6 class="text-white">Ads</h6>
+              
+            </div>
+          </div>
+        </a>
+        
+      </div>
+    </div><!-- End Revenue Card -->
+    
+    <!-- Sales Card -->
+    <div class="col-xxl-4 col-md-6">
+      <div class="card info-card sales-card bg-danger">
+        
+        <div class="filter">
+          <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+          
+        </div>
+        
+        <a  class="card-body" href="{% url 'base:add_youtube' %}">
+          <h5 class="card-title text-white">Youtube </h5>
+          <div class="d-flex align-items-center">
+            <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+              <i class="bi bi-youtube text-danger"></i>
+            </div>
+            <div class="ps-3">
+            <span class="text-white small pt-1 fw-bold">Add</span> 
+            <h6 class="text-white">Youtube Videos</h6>
+
+          </div>
+        </div>
+      </a>
+      
+    </div>
+  </div><!-- End Sales Card -->
+  {% endif %}
+  
+  
+  
+  <h2 class="card-title">Total Visitors by Date</h2>
+  
+  <canvas id="visitorChart" width="600" height="300"></canvas>
+  
+  
+  
+</div>
+</section>
+
+  </main><!-- End #main -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+    const ctx = document.getElementById('visitorChart');
+    const visitorChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: {{ dates|safe }},
+            datasets: [{
+                label: 'Total Visitors',
+                data: {{ totals|safe }},
+                borderColor: 'rgba(0, 0, 255, 1)',
+                tension: 0.3,
+                fill: true,
+                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+            }]
+        },
+        options: {
+            scales: {
+                y: { beginAtZero: true }
+            }
+        }
+    });
+</script>
+  {% endblock content %}

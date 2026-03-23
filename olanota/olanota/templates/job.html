@@ -1,0 +1,56 @@
+{% extends "base.html" %} {% load static %}{% load humanize %} {% block meta %}
+    <meta property="og:title" content="Olanota">
+    <meta property="og:description" content="Olanota political news crime news local state news central news government news">
+    <meta property="og:image" content="https://{{request.get_host}}{% static "images/logo2.png" %}">
+    <meta property="og:url" content="{{ request.build_absolute_uri }}">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Olanota">
+    <meta name="twitter:image" content="https://{{request.get_host}}{% static "images/logo2.png" %}">
+{% endblock meta %}{% block content %}
+                  <section>
+                        <div class="container">
+                            <div class="row">
+                                <div class="">
+                                    <div class="main-container fl-wrap fix-container-init">
+                                   
+                                        <!--   row-->
+                                        <div class="row">
+                                            <!--   shop-item-->
+                                               {% for posts in post  %}
+                                            <div class="col-md-6">
+                                                <div class="det-box">
+                                                    <a href="{% url "base:job_details" posts.id %}" class="det-box-media"><span>Details</span>
+                                                    </a>
+                                                    <div class="det-box-ietm dbig dbi_shop fl-wrap">
+                                                        <h3><a href="{% url "base:job_details" posts.id %}">{{posts.title}}</a></h3>
+                                                        <p>{{posts.skills}}</p>
+                                                        <div class="reviews_counter_wrap">
+                                                            <div class="reviews_counter_wrap_text">{{posts.about_role}}</div>
+                                                        </div>
+                                                        <div class="grid-item_price fl-wrap">
+                                                            <span class="grid-item_price_item rent-price">Deadline: <strong>{{posts.deadline}}</strong></span>
+                                                            <a href="{% url "base:job_details" posts.id %}" class="add_cart"><i class="fal fa-plus"></i> <span>Apply</span></a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!--   shop-item end-->
+                                               {% endfor %}
+                                    
+                                        </div>
+                                        <!--  row end-->
+                                        <!--   row-->
+                                 
+                                        <!--  row end-->
+                                        <div class="clearfix"></div>
+                                     								
+                                    </div>
+                                </div>
+                                <!-- sidebar   -->
+                            
+                            </div>
+                            <div class="limit-box fl-wrap"></div>
+                        </div>
+                    </section>
+{% endblock content %}

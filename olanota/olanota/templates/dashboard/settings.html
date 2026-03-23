@@ -1,0 +1,78 @@
+ {% extends "dashboard/base.html" %}
+ {% load static %}
+{% block content %}
+{% load helper_tags %}
+
+{% comment %} {%load widget_tweaks%} {% endcomment %}
+{% include "dashboard/sidebar.html" %} 
+
+<main id="main" class="main">  
+    <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Site Settings</h5>
+              <!-- Floating Labels Form -->
+                <form class="row g-3" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    <!-- Toggle switches -->
+    <div class="col-md-12">
+        <div class="form-check form-switch">
+            <input type="checkbox" name="show_jobs" id="show_jobs" class="form-check-input"  
+                   {% if settings.show_jobs %}checked{% endif %}> 
+            <label class="form-check-label" for="show_jobs">Show Job Section</label>
+        </div>
+    </div>
+
+    <div class="col-md-12">
+        <div class="form-check form-switch">
+            <input type="checkbox" name="show_youtube" class="form-check-input" id="show_youtube" 
+                   {% if settings.show_youtube %}checked{% endif %}> 
+            <label class="form-check-label" for="show_youtube">Show YouTube Section</label>
+        </div>
+    </div>
+
+    <!-- Social media / contact fields -->
+   
+{% for field in social_fields %}
+<div class="form-group col-md-12">
+    <label for="{{ field }}">{{ field|capfirst|replace_underscores }}</label>
+
+    {% if field == 'email' %}
+        <input type="email" 
+               name="{{ field }}" 
+               id="{{ field }}" 
+               value="{{ settings|attr:field|default:'' }}" 
+               placeholder="Enter {{ field|capfirst|replace_underscores }}" 
+               class="form-control">
+    {% elif field == 'phone_number' %}
+        <input type="tel" 
+               name="{{ field }}" 
+               id="{{ field }}" 
+               value="{{ settings|attr:field|default:'' }}" 
+               placeholder="Enter {{ field|capfirst|replace_underscores }}" 
+               class="form-control">
+    {% else %}
+        <input type="url" 
+               name="{{ field }}" 
+               id="{{ field }}" 
+               value="{{ settings|attr:field|default:'' }}" 
+               placeholder="Enter {{ field|capfirst|replace_underscores }}" 
+               class="form-control">
+    {% endif %}
+</div>
+{% endfor %}
+
+    <div class="text-center col-md-12">
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+</form>
+
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main><!-- End #main -->
+  {% endblock content %}

@@ -1,0 +1,427 @@
+{% extends "base.html" %} {% load static %} {% block content %}
+{%load widget_tweaks%}
+{% load humanize %}
+{% block meta %}
+ <meta name="author" content="{% if news.author %}{{ news.author.user.get_full_name }}{% endif %}"> 
+    <meta property="og:title" content="{{ news_detail.Title }}">
+    <meta property="og:description" content="{{ news_detail.Sub_heading|default:news_detail.Description|truncatechars:150 }}">
+    <meta property="og:image" content="https://{{request.get_host}}{{ news_detail.Image_1.url }}">
+    <meta property="og:url" content="{{ request.build_absolute_uri }}">
+    <meta property="og:type" content="article">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ news_detail.Title }}">
+    <meta name="twitter:description" content="{{ news_detail.Sub_heading|truncatechars:150 }}">
+    <meta name="twitter:image" content="https://{{request.get_host}}{{ news_detail.Image_1.url }}">
+{% endblock meta %}
+<!-- content    -->
+<div class="content">
+  <div class="breadcrumbs-header fl-wrap">
+    <div class="container">
+      <div class="breadcrumbs-header_url">
+        <a href="/">Home</a
+        ><span
+          >{{news_detail.Title}}</span
+        >
+      </div>
+    </div>
+  </div>
+  <!--section   -->
+  <section>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-8">
+          <div class="main-container fl-wrap fix-container-init">
+            <!-- single-post-header  -->
+            <div class="single-post-header fl-wrap">
+              <a class="post-category-marker" href="/list/?cat={{news_detail.Category}}">{{news_detail.Category}}</a>
+              <div class="clearfix"></div>
+              <h1>
+                {{news_detail.Title}}
+              </h1>
+              <h4>{{news_detail.Location}}:</h4>
+              <div class="clearfix"></div>
+
+             
+            </div>
+            <!-- single-post-header end   -->
+            <!-- single-post-media   -->
+            <div class="single-post-media fl-wrap">
+              <div class="single-slider-wrap fl-wrap">
+                <div class="single-slider fl-wrap">
+                  <div class="swiper-container">
+                    <div class="swiper-wrapper lightgallery">
+                      <!-- swiper-slide   -->
+                       {% if news_detail.Image_1 %}
+                      <div class="swiper-slide hov_zoom">
+                        <img src="{{ news_detail.Image_1.url }}" alt="" />
+                        <a
+                          href="{{ news_detail.Image_1.url }}"
+                          class="box-media-zoom popup-image"
+                          ><i class="fas fa-search"></i
+                        ></a>
+                      </div>
+                      {% endif %}
+                      <!-- swiper-slide end   -->
+                       <!-- swiper-slide   -->
+                       {% if news_detail.Image_2 %}
+                      <div class="swiper-slide hov_zoom">
+                        <img src="{{ news_detail.Image_2.url }}" alt="" />
+                        <a
+                          href="{{ news_detail.Image_2.url }}"
+                          class="box-media-zoom popup-image"
+                          ><i class="fas fa-search"></i
+                        ></a>
+                      </div>
+                      {% endif %}
+                      <!-- swiper-slide end   --><!-- swiper-slide   -->
+                       {% if news_detail.Image_3 %}
+                      <div class="swiper-slide hov_zoom">
+                        <img src="{{ news_detail.Image_3.url }}" alt="" />
+                        <a
+                          href="{{ news_detail.Image_3.url }}"
+                          class="box-media-zoom popup-image"
+                          ><i class="fas fa-search"></i
+                        ></a>
+                      </div>
+                      {% endif %}
+                      <!-- swiper-slide end   --><!-- swiper-slide   -->
+                       {% if news_detail.Image_4 %}
+                      <div class="swiper-slide hov_zoom">
+                        <img src="{{ news_detail.Image_4.url }}" alt="" />
+                        <a
+                          href="{{ news_detail.Image_4.url }}"
+                          class="box-media-zoom popup-image"
+                          ><i class="fas fa-search"></i
+                        ></a>
+                      </div>
+                      {% endif %}
+                      <!-- swiper-slide end   --><!-- swiper-slide   -->
+                       {% if news_detail.Image_5 %}
+                      <div class="swiper-slide hov_zoom">
+                        <img src="{{ news_detail.Image_5.url }}" alt="" />
+                        <a
+                          href="{{ news_detail.Image_5.url }}"
+                          class="box-media-zoom popup-image"
+                          ><i class="fas fa-search"></i
+                        ></a>
+                      </div>
+                      {% endif %}
+                      <!-- swiper-slide end   --><!-- swiper-slide   -->
+                       {% if news_detail.Image_6 %}
+                      <div class="swiper-slide hov_zoom">
+                        <img src="{{ news_detail.Image_6.url }}" alt="" />
+                        <a
+                          href="{{ news_detail.Image_6.url }}"
+                          class="box-media-zoom popup-image"
+                          ><i class="fas fa-search"></i
+                        ></a>
+                      </div>
+                      {% endif %}
+                      <!-- swiper-slide end   -->
+                   
+                    </div>
+                  </div>
+                </div>
+                <div class="ss-slider-controls2">
+                  <div class="ss-slider-pagination pag-style"></div>
+                </div>
+                <div class="ss-slider-cont ss-slider-cont-prev">
+                  <i class="fas fa-caret-left"></i>
+                </div>
+                <div class="ss-slider-cont ss-slider-cont-next">
+                  <i class="fas fa-caret-right"></i>
+                </div>
+              </div>
+            </div>
+            <!-- single-post-media end   -->
+            <!-- single-post-content   -->
+
+                <div class="single-post-content spc_column fl-wrap">
+                                            <div class="single-post-content_column">
+                                                <div class="share-holder ver-share fl-wrap">
+                                                    <div class="share-title">Share This <br> Article:</div>
+                                                    <div class="share-container ">
+
+                                                     {% comment %} Assume `news` is your News object {% endcomment %}
+
+                                            <div class="social-share">
+                                              <!-- LinkedIn -->
+                                              <a href="https://www.linkedin.com/shareArticle?mini=true&url={{request.build_absolute_uri}}&title={{ news_detail.Title|urlencode }}&summary={{ news_detail.Description|truncatewords:30|urlencode }}&source={{ request.get_host }}" 
+                                                target="_blank" 
+                                                class="share-icon ">
+                                                <i class="fab fa-linkedin"></i>
+                                              </a>
+
+                                              <!-- Facebook -->
+                                              <a href="https://www.facebook.com/sharer/sharer.php?u={{request.build_absolute_uri}}" 
+                                                target="_blank" 
+                                                class="share-icon ">
+                                                <i class="fab fa-facebook-f"></i>
+                                              </a>
+
+                                              <!-- Twitter / X -->
+                                              <a href="https://twitter.com/intent/tweet?url={{request.build_absolute_uri}}&text={{ news_detail.Title|urlencode }}" 
+                                                target="_blank" 
+                                                class="share-icon ">
+                                                <i class="fab fa-x-twitter"></i>
+                                              </a>
+
+                                              <!-- WhatsApp -->
+                                              <a href="https://api.whatsapp.com/send?text={{ news_detail.Title|urlencode }}%20{{request.build_absolute_uri}}" 
+                                                target="_blank" 
+                                                class="share-icon ">
+                                                <i class="fab fa-whatsapp"></i>
+                                              </a>
+
+                                              <!-- Telegram -->
+                                              <a href="https://t.me/share/url?url={{request.build_absolute_uri}}&text={{ news_detail.Title|urlencode }}" 
+                                                target="_blank" 
+                                                class="share-icon ">
+                                                <i class="fab fa-telegram"></i>
+                                              </a>
+                                               <!-- Pinterest -->
+                                                <a href="https://pinterest.com/pin/create/button/?url={{ request.build_absolute_uri }}&media={{ news_detail.Image_1.url }}&description={{ news_detail.Title|urlencode }}" target="_blank"  class="share-icon ">
+                                                    <i class="fab fa-pinterest"></i>
+                                                </a>
+
+                                                <!-- Reddit -->
+                                                <a href="https://www.reddit.com/submit?url={{ request.build_absolute_uri }}&title={{ news_detail.Title|urlencode }}" target="_blank"  class="share-icon ">
+                                                    <i class="fab fa-reddit"></i>
+                                                </a>
+
+                                                <!-- Email -->
+                                                <a href="mailto:?subject={{ news_detail.Title|urlencode }}&body=Check this news: {{ request.build_absolute_uri }}" target="_blank"  class="share-icon ">
+                                                    <i class="fas fa-envelope"></i>
+                                                </a>
+                                            </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+              <div class="fs-wrap smpar fl-wrap">
+                <div class="fontSize">
+                  <span class="fs_title">Font size: </span
+                  ><input
+                    type="text"
+                    class="rage-slider"
+                    data-step="1"
+                    data-min="12"
+                    data-max="15"
+                    value="12"
+                  />
+                </div>
+              </div>
+              <div class="clearfix"></div>
+              <div class="single-post-content_text" id="font_chage">
+                <h4 class="mb_head">
+                  {{news_detail.Sub_heading}}
+                </h4>
+                <p>
+                  {{news_detail.Description|safe|linebreaks}}
+                </p>
+                
+                 <div class="single-post-header fl-wrap">
+            
+
+              <span class="post-date"
+                >Posted  {{news_detail.Date|naturaltime }} <i class="far fa-clock"></i></span
+              >
+            </div>
+              </div>
+
+                   <div class="single-post-footer fl-wrap">
+                                                <div class="post-single-tags">
+                                                    <span class="tags-title"><i class="fas fa-tag"></i> Tags : </span>
+                                                      {% for tag in news_detail.tags.all %}
+                                                       <div class="tags-widget">
+                                                  <a href="/list/?q={{tag.slug}}" class="badge bg-primary">{{ tag.name }}</a>
+                                                   </div>
+                                              {% empty %}
+                                                  <span>No tags</span>
+                                              {% endfor %}
+                                                </div>
+                                            </div>
+                                                {% if news_detail.author %}
+                                        <div class="post-author fl-wrap">
+                                            <div class="author-img">
+
+                                              {% if news_detail.author.profile_image %}
+                                              <img  src="{{news_detail.author.profile_image.url}}" alt="">	
+                                              {% endif %}
+                                            </div>
+                                            <div class="author-content fl-wrap">
+                                              <h5>Posted By <a href="{% url 'base:author_details' news_detail.author.pk %}">{{news_detail.author}}</a></h5>
+                                              <p>{{news_detail.author.bio}}</p>
+                                            </div>
+                                         
+                                          </div>
+                                          {% endif %}
+               <section>
+
+  <div class="comment-section">
+    <h2>Comments </h2>
+
+    {% for comment in comments  %}
+    <div class="comment">
+      <div class="content">
+        <h4>{{comment.name}}</h4>
+        <span>{{comment.created_at}}</span>
+        <p>{{comment.content}}</p>
+      </div>
+    </div>
+    {% endfor %}
+
+
+    <div class="add-comment">
+      <h3>Leave a Comment</h3>
+      <form method="POST">
+        {% csrf_token %}
+      {% render_field form.content rows="4" placeholder="Write your comment..." required="True"  %}
+        {% render_field form.name placeholder="Name" required="True" %}
+        {% render_field form.email placeholder="Email" required="True" %}
+        <button type="submit">Post Comment</button>
+      </form>
+      
+    </div>
+  </div>
+ </section>
+ 
+              <!-- single-post-nav"   -->
+              <div class="single-post-nav fl-wrap">
+                {% if nx %}
+                <a href="{% url 'base:detail' nx.slug nx.pk %}" class="single-post-nav_prev spn_box">
+                  <div class="spn_box_img">
+                    <img src="{{nx.Image_1.url}}" class="respimg" alt="" />
+                  </div>
+                  <div class="spn-box-content">
+                    <span class="spn-box-content_subtitle"
+                      ><i class="fas fa-caret-left"></i> Prev Post</span
+                    >
+                    <span class="spn-box-content_title"
+                      >{{nx.Title}}</span
+                    >
+                  </div>
+                </a>
+                {% endif %}
+                {% if pr %}
+                <a href="{% url 'base:detail' pr.slug  pr.pk %}" class="single-post-nav_next spn_box">
+                  <div class="spn_box_img">
+                    <img src="{{pr.Image_1.url}}" class="respimg" alt="" />
+                  </div>
+                  <div class="spn-box-content">
+                    <span class="spn-box-content_subtitle"
+                      >Next Post <i class="fas fa-caret-right"></i
+                    ></span>
+                    <span class="spn-box-content_title"
+                      >{{pr.Title}}
+                    </span>
+                  </div>
+                </a>
+                {% endif %}
+              </div>
+              
+              <!-- single-post-nav"  end   -->
+            </div>
+             <section>
+               <!-- post-author-->                                   
+           
+                                        <!--post-author end-->
+    <div class="" style="margin-top: 20px; margin-bottom: 20px;">
+      <div class="">
+        {% if ads4.image %}
+        <a href="{{ ads4.link }}" target="_blank" class="ad-link">
+          <img src="{{ ads4.image.url }}" alt="{{ ads4.title }}"  style="width: 100%;">
+        </a>
+        {% endif %}
+      </div>
+    </div>
+    <div class="clearfix"></div>
+    <div class="container-fluid">
+      <div class="main-container fl-wrap">
+      
+        <!--grid-post-wrap-->
+        <div class="grid-post-wrap row">
+          <!--grid-post-item-->
+
+          {% for items in related_posts %}	
+          <div class="col-md-6">
+            <div class="grid-post-item bold_gpi fl-wrap">
+              <div class="grid-post-media">
+                <a href="{% url 'base:detail' items.slug items.pk %}" class="gpm_link">
+                  <div class="bg-wrap">
+                    <div class="bg" data-bg="{{items.Image_1.url}}"></div>
+                  </div>
+                </a>
+              </div>
+              <a class="post-category-marker purp-bg" href="/list/?cat={{items.Category}}">{{items.Category}}</a>
+              <div class="grid-post-content">
+                <h3>
+                  <a href="{% url 'base:detail' items.slug items.pk %}"
+                    >{{items.Title}}</a
+                  >
+                </h3>
+                <span class="post-date"
+                  ><i class="far fa-clock"></i> {{items.Date|naturaltime}}</span
+                >
+                <p>
+                  {{items.Sub_heading}}
+                </p>
+              </div>
+            </div>
+          </div>
+          {%endfor%}
+          <!--grid-post-item end-->
+        
+        </div>
+        <!--grid-post-wrap end-->
+        <div class="clearfix"></div>
+         <a href="/list" class="dark-btn fl-wrap"> Read all News </a>
+      </div>
+    </div>
+  </section>
+            <!-- single-post-content  end   -->
+            <div class="limit-box2 fl-wrap"></div>
+          </div>
+        </div>
+      
+        {% include "sidebar.html" %} 
+
+      </div>
+      
+      <div class="limit-box fl-wrap"></div>
+    </div>
+  </section>
+  <div>
+        
+        {% for ads in ads  %}
+              {% if ads.image %}
+              <a href="{{ ads.link }}" target="_blank" class="ad-link">
+                <img src="{{ ads.image.url }}" alt="{{ ads.title }}"  style="width: 100%;">
+              </a>
+              {% endif %}
+              {% endfor %}
+            </div>
+  <!-- section end -->
+  <!-- section  -->
+   
+                    <!-- Comment  -->
+                 
+                    <!-- Comment -->
+                     
+</div>
+<!-- content  end-->
+
+<section>
+<div class="">
+    <div class="">
+      {% if ads2.image %}
+        <a href="{{ ads2.link }}" target="_blank" class="ad-link">
+          <img src="{{ ads2.image.url }}" alt="{{ ads2.title }}"  style="width: 100%;">
+        </a>
+      {% endif %}
+    </div>
+</div>
+
+</section>
+{% endblock content %}

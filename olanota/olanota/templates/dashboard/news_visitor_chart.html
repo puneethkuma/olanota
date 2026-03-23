@@ -1,0 +1,47 @@
+ {% extends "dashboard/base.html" %}
+ {% load static %}
+{% block content %}
+{% include "dashboard/sidebar.html" %} 
+
+<main id="main" class="main">  
+
+  <section class="section dashboard">
+     <div class="pagetitle">
+       
+       <h6>Visitors for - "{{ news.Title }}"</h6>
+       
+       <h2 class="card-title">Total Visitors by Date</h2>
+  
+  <canvas id="visitorChart" width="600" height="300"></canvas>
+  
+  
+  
+</div>
+</section>
+
+  </main><!-- End #main -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+    const ctx = document.getElementById('visitorChart');
+    const visitorChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: {{ dates|safe }},
+            datasets: [{
+                label: 'Total Visitors',
+                data: {{ totals|safe }},
+                borderColor: 'rgba(0, 0, 255, 1)',
+                tension: 0.3,
+                fill: true,
+                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+            }]
+        },
+        options: {
+            scales: {
+                y: { beginAtZero: true }
+            }
+        }
+    });
+</script>
+  {% endblock content %}

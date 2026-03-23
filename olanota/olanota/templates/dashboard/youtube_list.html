@@ -1,0 +1,55 @@
+ {% extends "dashboard/base.html" %}
+ {% load static %}
+{% block content %}
+{% include "dashboard/sidebar.html" %} 
+
+<main id="main" class="main">  
+
+  <section class="section dashboard">
+     <div class="pagetitle">
+    <h1>Youtube List</h1>
+    <nav>
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="#">Home</a></li>
+      <li class="breadcrumb-item active">Youtube List</li>
+    </ol>
+    </nav>
+  </div><!-- End Page Title -->
+
+
+
+
+ 
+<div class="container">
+    <div class="row">
+      {% for items in youtube %}
+        <div class="col-xl-12">
+            <div class="card mb-3 card-body">
+                <div class="row align-items-center">
+                    <div class="col-auto">
+                      {{items.youtube_url|safe}}
+                    </div>
+                    <div class="col">
+                        <div class="overflow-hidden flex-nowrap">
+                            <h6 class="mb-1">
+                                <h1 class="">{{items.title}}</h1>
+                            </h6>
+                             <a href="{% url "base:edit_youtube" items.id %}" class="btn btn-success"><i class="bi bi-pencil"></i> Edit</a>
+             <a href="{% url "base:delete_youtube" items.id %}" class="btn btn-danger"><i class="bi bi-trash"></i> Delete</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+        
+       
+    </div>
+</div>
+     
+
+    </div>
+  </section>
+
+  </main><!-- End #main -->
+  {% endblock content %}

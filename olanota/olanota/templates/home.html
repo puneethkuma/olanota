@@ -1,0 +1,525 @@
+{% extends "base.html" %} {% load static %}{% load humanize %}{% block meta %}
+    <meta property="og:title" content="News 23">
+    <meta property="og:description" content="News 23 political news crime news local state news central news government news">
+    <meta property="og:image" content="https://{{request.get_host}}{% static "images/logo2.png" %}">
+    <meta property="og:url" content="{{ request.build_absolute_uri }}">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="News 23">
+    <meta name="twitter:image" content="https://{{request.get_host}}{% static "images/logo2.png" %}">
+{% endblock meta %} {% block content %}
+
+<div class="content">
+  <!-- hero grid    -->
+   
+  <div class="hero-hrid fl-wrap gray-bg">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="single-slider-wrap fl-wrap">
+            <div class="single-slider fl-wrap">
+              <div class="swiper-container">
+                <div class="swiper-wrapper">
+                  {% for items in last_four %}
+                  <!-- swiper-slide   -->
+                  <div class="swiper-slide">
+                    <div class="grid-post-item bold_gpi fl-wrap">
+                      <div class="grid-post-media gpm_sing">
+                        <div class="bg" data-bg="{{items.Image_1.url}}"></div>
+
+                        <div class="grid-post-media_title">
+                          <a
+                            class="post-category-marker"
+                            href="/list/?cat={{items.Category}}"
+                            >{{items.Category}}</a
+                          >
+                          <h4>
+                            <a href="{% url 'base:detail' items.slug items.pk %}"
+                              >{{items.Title}}</a
+                            >
+                          </h4>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- swiper-slide end   -->
+                  {%endfor%}
+                </div>
+              </div>
+            </div>
+            <div class="ss-slider-cont ss-slider-cont-prev">
+              <i class="fas fa-caret-left"></i>
+            </div>
+            <div class="ss-slider-cont ss-slider-cont-next">
+              <i class="fas fa-caret-right"></i>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 row">
+          {% for items in objects5 %}
+          <div class="col-md-6">
+            <div class="grid-post-item bold_gpi fl-wrap">
+              <div class="grid-post-media gpm_sing bold_gpi_half">
+                <div class="bg" data-bg="{{items.Image_1.url}}"></div>
+
+                <div class="grid-post-media_title">
+                  <a
+                    class="post-category-marker"
+                    href="/list/?cat={{items.Category}}"
+                    >{{items.Category}}</a
+                  >
+                  <h4>
+                    <a href="{% url 'base:detail' items.slug items.pk %}"
+                      >{{items.Title}}</a
+                    >
+                  </h4>
+                </div>
+              </div>
+            </div>
+          </div>
+          {%endfor%}
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- hero grid end   -->
+   {% if settings.show_youtube  %}
+      <section>
+        <div class="section-title">
+              <h2>Latest Youtube Videos</h2>
+              <h4>Subscribe Our Youtube Channel</h4>
+            </div>
+        <div class="row ">
+          {% for items in youtube %}
+          <div class="col-md-6 youtube">
+    {{items.youtube_url|safe}}
+  </div>
+    {%endfor%}
+    </div>
+   </section>
+   {% endif %}
+  <!-- section   -->
+    <div class="">
+      {% if ads1.image %}
+        <a href="{{ ads1.link }}" target="_blank" class="ad-link">
+          <img src="{{ ads1.image.url }}" alt="{{ ads1.title }}"  style="width: 100%;">
+        </a>
+      {% endif %}
+    </div>
+  <!-- section   -->
+  <section>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-8">
+          <div class="main-container fl-wrap fix-container-init">
+            <div class="section-title">
+              <h2>Latest News</h2>
+              <h4>Don't miss daily news</h4>
+            </div>
+            <div class="ajax-wrapper fl-wrap">
+              <div class="ajax-inner fl-wrap">
+                <div class="list-post-wrap">
+                  {% for items in last_four %}
+                  <!--list-post-->
+                  <div class="list-post fl-wrap">
+                    <div class="list-post-media">
+                      <a href="{% url 'base:detail' items.slug items.pk %}">
+                        <div class="bg-wrap">
+                          <div class="bg" data-bg="{{items.Image_1.url}}"></div>
+                        </div>
+                      </a>
+                    </div>
+                    <div class="list-post-content">
+                      <a
+                        class="post-category-marker"
+                        href="/list/?cat={{items.Category}}"
+                        >{{items.Category}}</a
+                      >
+                      <h3>
+                        <a href="{% url 'base:detail' items.slug items.pk %}"
+                          >{{items.Title}}</a
+                        >
+                      </h3>
+                      <span class="post-date"
+                        ><i class="far fa-clock"></i> {{items.Date|naturaltime}}</span
+                      >
+                      <p>{{items.Sub_heading}}</p>
+                    </div>
+                  </div>
+                  <!--list-post end-->
+                  {%endfor%}
+                  <a href="{% url 'base:list'  %}" class="load-more_btn"
+                    ><i class="fal fa-eye"></i>Read More</a
+                  >
+                </div>
+              </div>
+            </div>
+            <div class="clearfix"></div>
+            <div class="section-title sect_dec">
+              <h2>Political News</h2>
+              <h4>Don't miss daily news</h4>
+            </div>
+            <div class="grid-post-wrap">
+              <div class="more-post-wrap fl-wrap">
+                <div class="list-post-wrap list-post-wrap_column fl-wrap">
+                  <div class="row ">
+                    {% for items in Politicalc %}
+                    <div class="col-md-6">
+                      <!--list-post-->
+                      <div class="list-post fl-wrap">
+                        <a
+                          class="post-category-marker"
+                          href="/list/?cat={{items.Category}}"
+                          >{{items.Category}}</a
+                        >
+                        <div class="list-post-media">
+                          <a href="{% url 'base:detail' items.slug items.pk %}">
+                            <div class="bg-wrap">
+                              <div
+                                class="bg"
+                                data-bg="{{items.Image_1.url}}"
+                              ></div>
+                            </div>
+                          </a>
+                        </div>
+                        <div class="list-post-content">
+                          <h3>
+                            <a href="{% url 'base:detail' items.slug items.pk %}"
+                              >{{items.Title}}</a
+                            >
+                          </h3>
+                          <span class="post-date"
+                            ><i class="far fa-clock"></i> {{items.Date|naturaltime}}</span
+                          >
+                        </div>
+                      </div>
+                      <!--list-post end-->
+                    </div>
+                    {%endfor%}
+                  </div>
+                </div>
+              </div>
+              <div class="clearfix"></div>
+              <a href="{% url 'base:list'  %}" class="load-more_btn"
+                ><i class="fal fa-eye"></i>Read More</a
+              >
+              <!--grid-post-item-->
+              <div class="clearfix"></div>
+              <div class="section-title sect_dec">
+                <h2>Crime News</h2>
+                <h4>Don't miss daily news</h4>
+              </div>
+              <div class="single-grid-slider-wrap fl-wrap">
+                <div class="single-grid-slider">
+                  <div class="swiper-container">
+                    <div class="swiper-wrapper">
+                      <!-- swiper-slide-->
+                      {% for items in Crimec %}
+                      <div class="swiper-slide">
+                        <div class="grid-post-item bold_gpi fl-wrap">
+                          <div class="grid-post-media gpm_sing">
+                            <div
+                              class="bg"
+                              data-bg="{{items.Image_1.url}}"
+                            ></div>
+
+                            <div class="grid-post-media_title">
+                              <a
+                                class="post-category-marker"
+                                href="/list/?cat={{items.Category}}"
+                                >{{items.Category}}</a
+                              >
+                              <h4>
+                                <a href="{% url 'base:detail' items.slug items.pk %}l">{{items.Title}}</a>
+                              </h4>
+                              <span class="video-date"
+                                ><i class="far fa-clock"></i>
+                                {{items.Date|naturaltime}}</span
+                              >
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- swiper-slide end-->
+                      {% endfor %}
+                    </div>
+                    <div class="sgs-pagination sgs_ver"></div>
+                  </div>
+                </div>
+              </div>
+              <!--grid-post-item end-->
+              <div class="more-post-wrap fl-wrap">
+                <div class="list-post-wrap list-post-wrap_column fl-wrap">
+                  <div class="row">
+                    {% for items in Crimec %}
+                    <div class="col-md-6">
+                      <!--list-post-->
+                      <div class="list-post fl-wrap">
+                        <a
+                          class="post-category-marker"
+                          href="/list/?cat={{items.Category}}"
+                          >{{items.Category}}</a
+                        >
+                        <div class="list-post-media">
+                          <a href="{% url 'base:detail' items.slug items.pk %}l">
+                            <div class="bg-wrap">
+                              <div
+                                class="bg"
+                                data-bg="{{items.Image_1.url}}"
+                              ></div>
+                            </div>
+                          </a>
+                        </div>
+                        <div class="list-post-content">
+                          <h3>
+                            <a href="{% url 'base:detail' items.slug items.pk %}"
+                              >{{items.Title}}</a
+                            >
+                          </h3>
+                          <span class="post-date"
+                            ><i class="far fa-clock"></i>{{items.Date|naturaltime}}</span
+                          >
+                        </div>
+                      </div>
+                      <!--list-post end-->
+                    </div>
+                    {% endfor %}
+                  </div>
+                </div>
+              </div>
+            </div>
+            <a href="/list" class="dark-btn fl-wrap"> Read all News </a>
+          </div>
+        </div>
+        {% include "sidebar.html" %}
+      </div>
+      <div class="limit-box fl-wrap"></div>
+    </div>
+  </section>
+  <!-- section end -->
+
+  <div class="">
+      {% if ads2.image %}
+        <a href="{{ ads2.link }}" target="_blank" class="ad-link">
+          <img src="{{ ads2.image.url }}" alt="{{ ads2.title }}"  style="width: 100%;">
+        </a>
+      {% endif %}
+    </div>
+  <!-- section  -->
+  <section>
+    <div class="container-fluid">
+      <div class="section-title sect_dec">
+        <h2>Central News</h2>
+        <h4>Don't miss daily news</h4>
+      </div>
+      <div class="row">
+        <div class="col-md-5">
+          <div
+            class="list-post-wrap list-post-wrap_column list-post-wrap_column_fw"
+          >
+          {% for items in Centralc1 %}
+            <!--list-post-->
+            <div class="list-post fl-wrap">
+              <a class="post-category-marker"  href="/list/?cat={{items.Category}}">{{items.Category}}</a>
+              <div class="list-post-media">
+                <a href="{% url 'base:detail' items.slug items.pk %}">
+                  <div class="bg-wrap">
+                    <div class="bg" data-bg="{{items.Image_1.url}}"></div>
+                  </div>
+                </a>
+              </div>
+              <div class="list-post-content">
+                <h3>
+                  <a href="{% url 'base:detail' items.slug items.pk %}"
+                    >{{items.Title}}
+                  </a>
+                </h3>
+                <span class="post-date"
+                  ><i class="far fa-clock"></i>{{items.Date|naturaltime}}</span
+                >
+                <p>
+                 {{items.Sub_heading}}
+                </p>
+              </div>
+            </div>
+            <!--list-post end-->
+            {%endfor%}
+          </div>
+          <a href="/list" class="dark-btn fl-wrap"> Read all News </a>
+        </div>
+        <div class="col-md-7">
+          <div class="picker-wrap-container fl-wrap">
+            <div class="picker-wrap-controls">
+              <ul class="fl-wrap">
+                <li>
+                  <span class="pwc_up"><i class="fas fa-caret-up"></i></span>
+                </li>
+                <li>
+                  <span class="pwc_pause"><i class="fas fa-pause"></i></span>
+                </li>
+                <li>
+                  <span class="pwc_down"
+                    ><i class="fas fa-caret-down"></i
+                  ></span>
+                </li>
+              </ul>
+            </div>
+            <div class="picker-wrap fl-wrap">
+              <div class="list-post-wrap fl-wrap">
+
+                 {% for items in Centralc %}	
+                <!--list-post-->
+                <div class="list-post fl-wrap">
+                  <div class="list-post-media">
+                    <a href="{% url 'base:detail' items.slug items.pk %}">
+                      <div class="bg-wrap">
+                        <div class="bg" data-bg="{{items.Image_1.url}}"></div>
+                      </div>
+                    </a>
+                  </div>
+                  <div class="list-post-content">
+                    <a class="post-category-marker"href="/list/?cat={{items.Category}}">{{items.Category}}</a>
+                    <h3>
+                      <a href="{% url 'base:detail' items.slug items.pk %}"
+                        >{{items.Title}}</a
+                      >
+                    </h3>
+                    <span class="post-date"
+                      ><i class="far fa-clock"></i>{{items.Date|naturaltime}}</span
+                    >
+                    <p>
+                      {{items.Sub_heading}}
+                    </p>
+                  </div>
+                </div>
+                <!--list-post end-->
+              {%endfor%}
+              </div>
+            </div>
+            <div class="controls-limit fl-wrap"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="limit-box"></div>
+  </section>
+  <!-- section end -->
+  <!--section   -->
+  <div class="">
+    <div class="">
+      {% if ads3.image %}
+        <a href="{{ ads3.link }}" target="_blank" class="ad-link">
+          <img src="{{ ads3.image.url }}" alt="{{ ads3.title }}"  style="width: 100%;">
+        </a>
+      {% endif %}
+    </div>
+</div>
+  <section>
+    <div class="container-fluid">
+      <div class="main-container fl-wrap">
+        <div class="section-title">
+          <h2>Most Recent Local News</h2>
+          <h4>Don't miss daily news</h4>
+        </div>
+        <!--grid-post-wrap-->
+        <div class="grid-post-wrap gallery-items">
+          <!--grid-post-item-->
+
+          {% for items in Localc %}	
+          <div class="gallery-item">
+            <div class="grid-post-item bold_gpi fl-wrap">
+              <div class="grid-post-media">
+                <a href="{% url 'base:detail' items.slug items.pk %}" class="gpm_link">
+                  <div class="bg-wrap">
+                    <div class="bg" data-bg="{{items.Image_1.url}}"></div>
+                  </div>
+                </a>
+              </div>
+              <a class="post-category-marker purp-bg" href="/list/?cat={{items.Category}}">{{items.Category}}</a>
+              <div class="grid-post-content">
+                <h3>
+                  <a href="{% url 'base:detail' items.slug items.pk %}"
+                    >{{items.Title}}</a
+                  >
+                </h3>
+                <span class="post-date"
+                  ><i class="far fa-clock"></i> {{items.Date|naturaltime}}</span
+                >
+                <p>
+                  {{items.Sub_heading}}
+                </p>
+              </div>
+            </div>
+          </div>
+          {%endfor%}
+          <!--grid-post-item end-->
+        
+        </div>
+        <!--grid-post-wrap end-->
+        <div class="clearfix"></div>
+        <a href="/list" class="dark-btn fl-wrap"> Read all News </a>
+      </div>
+    </div>
+    <div class="" style="margin-top: 20px; margin-bottom: 20px;">
+      <div class="">
+        {% if ads4.image %}
+        <a href="{{ ads4.link }}" target="_blank" class="ad-link">
+          <img src="{{ ads4.image.url }}" alt="{{ ads4.title }}"  style="width: 100%;">
+        </a>
+        {% endif %}
+      </div>
+    </div>
+    <div class="clearfix"></div>
+    <div class="container-fluid">
+      <div class="main-container fl-wrap">
+        <div class="section-title">
+          <h2>Most Recent State News</h2>
+        </div>
+        <!--grid-post-wrap-->
+        <div class="grid-post-wrap gallery-items">
+          <!--grid-post-item-->
+
+          {% for items in Statec %}	
+          <div class="gallery-item">
+            <div class="grid-post-item bold_gpi fl-wrap">
+              <div class="grid-post-media">
+                <a href="{% url 'base:detail' items.slug items.pk %}" class="gpm_link">
+                  <div class="bg-wrap">
+                    <div class="bg" data-bg="{{items.Image_1.url}}"></div>
+                  </div>
+                </a>
+              </div>
+              <a class="post-category-marker purp-bg" href="/list/?cat={{items.Category}}">{{items.Category}}</a>
+              <div class="grid-post-content">
+                <h3>
+                  <a href="{% url 'base:detail' items.slug items.pk %}"
+                    >{{items.Title}}</a
+                  >
+                </h3>
+                <span class="post-date"
+                  ><i class="far fa-clock"></i> {{items.Date|naturaltime}}</span
+                >
+                <p>
+                  {{items.Sub_heading}}
+                </p>
+              </div>
+            </div>
+          </div>
+          {%endfor%}
+          <!--grid-post-item end-->
+        
+        </div>
+        <!--grid-post-wrap end-->
+        <div class="clearfix"></div>
+         <a href="/list" class="dark-btn fl-wrap"> Read all News </a>
+      </div>
+    </div>
+  </section>
+</div>
+
+
+
+{% endblock content %}
+
+
+

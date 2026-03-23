@@ -1,0 +1,49 @@
+ {% extends "dashboard/base.html" %}
+ {% load static %}
+{% block content %}
+{%load widget_tweaks%}
+{% include "dashboard/sidebar.html" %} 
+
+<main id="main" class="main">  
+    <div class="card">
+            <div class="card-body">
+              <h5 class="card-title"> Add Youtube video</h5>
+              <!-- Floating Labels Form -->
+                <form class="row g-3"  method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                <div class="col-md-12">
+                  <div class="form-floating">
+                     {% render_field form.title class="form-control" id="floatingName"  %}
+                    <label for="floatingName">Title</label>
+                  </div>
+                </div>
+                   <div class="col-md-12">
+                  <div class="form-floating">
+                     {% render_field form.youtube_url class="form-control" id="floatingName" style="height: 150px;"  %}
+                    <label for="floatingName">Link (Add Iframe Link copied from Youtube)</label>
+                  </div>
+                </div>
+                  <div class="col-md-12">
+                  
+                      <div class="form-check form-switch">
+                        {% render_field form.is_active class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" %} <label class="form-check-label" for="flexSwitchCheckDefault">Is Active</label>
+                    </div>
+                  </div>
+     
+               
+                
+
+                <div class="text-center">
+                  <button type="submit" class="btn btn-primary">Submit</button>
+                  <button type="reset" class="btn btn-secondary">Reset</button>
+                </div>
+              </form><!-- End floating Labels Form -->
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main><!-- End #main -->
+  {% endblock content %}
