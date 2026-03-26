@@ -5896,6 +5896,8 @@ h4.cart-title span {
 
   }
 
+
+
   /* Kannada font support */
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Kannada:wght@400;600;700&display=swap');
 
@@ -5919,3 +5921,4 @@ h4.cart-title span {
         font-weight: 900;
     }
 }
+  
