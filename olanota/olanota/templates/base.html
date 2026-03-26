@@ -6,7 +6,7 @@
 <head>
     <!--=============== basic  ===============-->
     <meta charset="UTF-8">
-    <title>ಕಲ್ಪರತ್ನ</title>
+    <title>Olanota </title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="keywords"
@@ -149,7 +149,8 @@ pageLanguage: 'ml',
                     </div>
                     <!-- nav-button-wrap end-->
                     <!--  navigation -->
-                    <div class="nav-holder main-menu ">
+                    <!--  navigation -->
+                    <div class="nav-holder main-menu">
     <nav>
         <ul>
             <li><a href="/">ಮುಖ್ಯ</a></li>
@@ -162,61 +163,48 @@ pageLanguage: 'ml',
             <li><a href="/list/?cat=cinema">ಸಿನಿಮಾ</a></li>
             <li><a href="/list/?cat=health">ಆರೋಗ್ಯ</a></li>
             <li><a href="/list/?cat=local">ಲೋಕಲ್</a></li>
-            <li><a href="/list/?cat=district">ಜಿಲ್ಲಾ</a></li>
-            <li><a><div id="google_translate_element"></div></a></li>
-        </ul>
-                              <li >
-								<a class="" href="/list/?loc=Karnataka" >Karnataka<i class="fas fa-caret-down"></i> </a>
-								<ul >
-								<li><a href="/list/?loc=Bagalkot">Bagalkot</a></li>
-                                <li><a href="/list/?loc=Ballari (Bellary)">Ballari (Bellary)</a></li>
-                                <li><a href="/list/?loc=Belagavi (Belgaum)">Belagavi (Belgaum)</a></li>
-                                <li><a href="/list/?loc=Bengaluru Rural">Bengaluru Rural</a></li>
-                                <li><a href="/list/?loc=Bengaluru Urban">Bengaluru Urban</a></li>
-                                <li><a href="/list/?loc=Bidar">Bidar</a></li>
-                                <li><a href="/list/?loc=Chamarajanagara">Chamarajanagara</a></li>
-                                <li><a href="/list/?loc=Chikkaballapura">Chikkaballapura</a></li>
-                                <li><a href="/list/?loc=Chikkamagaluru">Chikkamagaluru</a></li>
-                                <li><a href="/list/?loc=Chitradurga">Chitradurga</a></li>
-                                <li><a href="/list/?loc=Dakshina Kannada">Dakshina Kannada</a></li>
-                                <li><a href="/list/?loc=Davanagere">Davanagere</a></li>
-                                <li><a href="/list/?loc=Dharwad">Dharwad</a></li>
-                                <li><a href="/list/?loc=Gadag">Gadag</a></li>
-                                <li><a href="/list/?loc=Hassan">Hassan</a></li>
-                                <li><a href="/list/?loc=Haveri">Haveri</a></li>
-                                <li><a href="/list/?loc=Kalaburagi (Gulbarga)">Kalaburagi (Gulbarga)</a></li>
-                                <li><a href="/list/?loc=Kodagu">Kodagu</a></li>
-                                <li><a href="/list/?loc=Kolar">Kolar</a></li>
-                                <li><a href="/list/?loc=Koppal">Koppal</a></li>
-                                <li><a href="/list/?loc=Mandya">Mandya</a></li>
-                                <li><a href="/list/?loc=Mysuru (Mysore)">Mysuru (Mysore)</a></li>
-                                <li><a href="/list/?loc=Raichur">Raichur</a></li>
-                                <li><a href="/list/?loc=Ramanagara">Ramanagara</a></li>
-                                <li><a href="/list/?loc=Shivamogga (Shimoga)">Shivamogga (Shimoga)</a></li>
-                                <li><a href="/list/?loc=Tumakuru (Tumkur)">Tumakuru (Tumkur)</a></li>
-                                <li><a href="/list/?loc=Udupi">Udupi</a></li>
-                                <li><a href="/list/?loc=Uttara Kannada">Uttara Kannada</a></li>
-                                <li><a href="/list/?loc=Vijayanagara">Vijayanagara</a></li>
-                                <li><a href="/list/?loc=Vijayapura (Bijapur)">Vijayapura (Bijapur)</a></li>
-                                <li><a href="/list/?loc=Yadgiri">Yadgiri</a></li>
-								</ul>
-							</li>
-                               
-                                <li><a href="/list/?cat=Politics">politics</a></li>
-                                {% if settings.show_jobs %}
-                                <li><a href="{% url "base:job"%}">Jobs</a></li>
-                                {% endif %}
-                                <li><a href="/list/?cat=education">Education</a></li>
-                                <li><a href="/list/?cat=lifestyle">Lifestyle</a></li>
-                                {% if settings.show_youtube  %}
-                                <li><a href="{% url "base:youtube"%}">Youtube</a></li>
-                                {% endif %}
-                                <li><a><div id="google_translate_element"></div>  </a></li>
-                            </ul>
-                        </nav>
-                    </div>
+            <li class="dropdown">
+                <a href="/list/?cat=district">ಜಿಲ್ಲಾ <i class="fas fa-caret-down"></i></a>
+                <ul>
+                    <li><a href="/list/?loc=Bagalkot">ಬಾಗಲಕೋಟೆ</a></li>
+                    <li><a href="/list/?loc=Ballari (Bellary)">ಬಳ್ಳಾರಿ</a></li>
+                    <li><a href="/list/?loc=Belagavi (Belgaum)">ಬೆಳಗಾವಿ</a></li>
+                    <li><a href="/list/?loc=Bengaluru Rural">ಬೆಂಗಳೂರು ಗ್ರಾಮಾಂತರ</a></li>
+                    <li><a href="/list/?loc=Bengaluru Urban">ಬೆಂಗಳೂರು ನಗರ</a></li>
+                    <li><a href="/list/?loc=Bidar">ಬೀದರ್</a></li>
+                    <li><a href="/list/?loc=Chamarajanagara">ಚಾಮರಾಜನಗರ</a></li>
+                    <li><a href="/list/?loc=Chikkaballapura">ಚಿಕ್ಕಬಳ್ಳಾಪುರ</a></li>
+                    <li><a href="/list/?loc=Chikkamagaluru">ಚಿಕ್ಕಮಗಳೂರು</a></li>
+                    <li><a href="/list/?loc=Chitradurga">ಚಿತ್ರದುರ್ಗ</a></li>
+                    <li><a href="/list/?loc=Dakshina Kannada">ದಕ್ಷಿಣ ಕನ್ನಡ</a></li>
+                    <li><a href="/list/?loc=Davanagere">ದಾವಣಗೆರೆ</a></li>
+                    <li><a href="/list/?loc=Dharwad">ಧಾರವಾಡ</a></li>
+                    <li><a href="/list/?loc=Gadag">ಗದಗ</a></li>
+                    <li><a href="/list/?loc=Hassan">ಹಾಸನ</a></li>
+                    <li><a href="/list/?loc=Haveri">ಹಾವೇರಿ</a></li>
+                    <li><a href="/list/?loc=Kalaburagi (Gulbarga)">ಕಲಬುರಗಿ</a></li>
+                    <li><a href="/list/?loc=Kodagu">ಕೊಡಗು</a></li>
+                    <li><a href="/list/?loc=Kolar">ಕೋಲಾರ</a></li>
+                    <li><a href="/list/?loc=Koppal">ಕೊಪ್ಪಳ</a></li>
+                    <li><a href="/list/?loc=Mandya">ಮಂಡ್ಯ</a></li>
+                    <li><a href="/list/?loc=Mysuru (Mysore)">ಮೈಸೂರು</a></li>
+                    <li><a href="/list/?loc=Raichur">ರಾಯಚೂರು</a></li>
+                    <li><a href="/list/?loc=Ramanagara">ರಾಮನಗರ</a></li>
+                    <li><a href="/list/?loc=Shivamogga (Shimoga)">ಶಿವಮೊಗ್ಗ</a></li>
+                    <li><a href="/list/?loc=Tumakuru (Tumkur)">ತುಮಕೂರು</a></li>
+                    <li><a href="/list/?loc=Udupi">ಉಡುಪಿ</a></li>
+                    <li><a href="/list/?loc=Uttara Kannada">ಉತ್ತರ ಕನ್ನಡ</a></li>
+                    <li><a href="/list/?loc=Vijayanagara">ವಿಜಯನಗರ</a></li>
+                    <li><a href="/list/?loc=Vijayapura (Bijapur)">ವಿಜಯಪುರ</a></li>
+                    <li><a href="/list/?loc=Yadgiri">ಯಾದಗಿರಿ</a></li>
+                </ul>
+            </li>
+            
+    </nav>
+</div>
                     <!-- navigation  end -->
-                        <p class="nav-middle-txt"><a href="/">ಒಳನೋಟ</a></p>
+                     <!-- navigation  end -->
+                    <p class="nav-middle-txt"><a href="/">ಒಳನೋಟ</a></p>
                 </div>
             </div>
         </header>
@@ -443,22 +431,21 @@ pageLanguage: 'ml',
                             <!-- footer-widget -->
                             <div class="col-md-2">
                                 <div class="footer-widget">
-                                    <div class="footer-widget-title">Categories </div>
+                                   <div class="footer-widget-title">ವಿಭಾಗಗಳು</div>
                                     <div class="footer-widget-content">
                                         <div class="footer-list footer-box fl-wrap">
-                                            <ul> 
-                                                <li><a href="/list/?loc=International">International</a></li>
-                                                <li><a href="/list/?loc=Karnataka">Karnataka</a></li>
-                                                <li><a href="/list/?cat=Politics">politics</a></li>
-                                                <li><a href="/list/?cat=jobs">Jobs</a></li>
-                                                <li><a href="/list/?cat=education">Education</a></li>
-                                                <li><a href="/list/?cat=lifestyle">Lifestyle</a></li>
-                                                <li><a href="/list/?cat=News">News</a></li>
+                                            <ul>
+                                                <li><a href="/list/?cat=news">ನ್ಯೂಸ್</a></li>
+                                                <li><a href="/list/?cat=Politics">ರಾಜಕೀಯ</a></li>
+                                                <li><a href="/list/?cat=crime">ಕ್ರೈಂ</a></li>
+                                                <li><a href="/list/?cat=sports">ಕ್ರೀಡೆ</a></li>
+                                                <li><a href="/list/?loc=India">ರಾಷ್ಟ್ರೀಯ</a></li>
+                                                <li><a href="/list/?loc=International">ಅಂತರರಾಷ್ಟ್ರೀಯ</a></li>
+                                                <li><a href="/list/?cat=cinema">ಸಿನಿಮಾ</a></li>
+                                                <li><a href="/list/?cat=health">ಆರೋಗ್ಯ</a></li>
+                                                <li><a href="/list/?cat=local">ಲೋಕಲ್</a></li>
+                                                <li><a href="/list/?cat=district">ಜಿಲ್ಲಾ</a></li>
                                             </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                             <!-- footer-widget  end-->
                             <!-- footer-widget -->
                             <div class="col-md-2">
@@ -489,8 +476,6 @@ pageLanguage: 'ml',
                                              <ul>
                                                  <li><i class="fa fa-envelope"></i> General Enquiries:
                                                   <br/>  <a href="mailto:info@olanota.com">info@olanota.com</a></li>
-                                                 
-                                          
                                             </ul>
                                     </div>
                                     </div>
