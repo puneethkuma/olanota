@@ -43,9 +43,9 @@ def register_author(request):
     return render(request, 'dashboard/register_author.html', {'form': form})
 
 class LatestNewsFeed(Feed):
-    title = "News 23"
+    title = "Olanota News"
     link = "/news/"
-    description = "Latest news from News 23"
+    description = "Latest news from olanota News"
     
     # RSS items
     def items(self):
