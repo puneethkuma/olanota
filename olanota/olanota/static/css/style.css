@@ -5895,3 +5895,27 @@ h4.cart-title span {
 	font-weight: 900;
 
   }
+
+  /* Kannada font support */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Kannada:wght@400;600;700&display=swap');
+
+.nav-holder nav li a,
+.menusb a,
+.nav-middle-txt a {
+    font-family: 'Noto Sans Kannada', 'Source Serif 4', serif;
+}
+
+/* Mobile nav Kannada label sizing */
+@media only screen and (max-width: 1064px) {
+    .menusb a {
+        font-size: 13px;
+        letter-spacing: 0;
+        line-height: 24px;
+        padding: 10px 5px;
+    }
+    .nav-middle-txt {
+        font-family: 'Noto Sans Kannada', serif;
+        font-size: 22px;
+        font-weight: 900;
+    }
+}
