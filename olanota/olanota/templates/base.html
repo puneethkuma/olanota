@@ -19,11 +19,11 @@
     <link type="text/css" rel="stylesheet" href="{% static "css/color.css" %}">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!--=============== favicons ===============-->
-    <link rel="shortcut icon" href="{% static "images/favicon.ico" %}">
-    <link rel="apple-touch-icon" sizes="180x180" href="{% static "images/apple-touch-icon.png" %}">
-    <link rel="icon" type="image/png" sizes="32x32" href="{% static "images/favicon-32x32.png" %}">
-    <link rel="icon" type="image/png" sizes="16x16" href="{% static "images/favicon-16x16.png" %}">
-    <link rel="manifest" href="{% static "images/site.webmanifest" %}">
+    <link rel="shortcut icon" href="{% static "images/favicon_io/favicon.ico" %}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static "images/favicon_io/apple-touch-icon.png" %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static "images/favicon_io/favicon-32x32.png" %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static "images/favicon_io/favicon-16x16.png" %}">
+    <link rel="manifest" href="{% static "images/favicon_io/site.webmanifest" %}">
 
     <!-- Page-specific Meta -->
     {% block meta %}{% endblock meta %}
@@ -129,7 +129,7 @@ pageLanguage: 'ml',
             <div class="header-inner fl-wrap">
                 <div class="container-fluid">
                     <!-- logo holder  -->
-                    <a href="/" class="logo-holder"><img src="{% static "images/logo3.png" alt="" %}"></a>
+                    <a href="/" class="logo-holder"><img src="{% static "images/logo2.png" alt="" %}"></a>
                     <!-- logo holder end -->
                        <div class="search_btn htact show_search-btn"><i class="fa fa-search"></i> <span class="header-tooltip">Search</span></div>
                            <div class="header-search-wrap novis_sarch">
@@ -163,8 +163,6 @@ pageLanguage: 'ml',
             <li><a href="/list/?cat=cinema">ಸಿನಿಮಾ</a></li>
             <li><a href="/list/?cat=health">ಆರೋಗ್ಯ</a></li>
             <li><a href="/list/?cat=local">ಲೋಕಲ್</a></li>
-            <li><a href="/list/?cat=special">ವಿಶೇಷ</a></li>
-            <li><a href="/list/?cat=world">ಪ್ರಪಂಚ</a></li>
             <li class="dropdown">
                 <a href="/list/?cat=district">ಜಿಲ್ಲಾ <i class="fas fa-caret-down"></i></a>
                 <ul>
@@ -199,18 +197,14 @@ pageLanguage: 'ml',
                     <li><a href="/list/?loc=Vijayanagara">ವಿಜಯನಗರ</a></li>
                     <li><a href="/list/?loc=Vijayapura (Bijapur)">ವಿಜಯಪುರ</a></li>
                     <li><a href="/list/?loc=Yadgiri">ಯಾದಗಿರಿ</a></li>
-                  <li><a><div id="google_translate_element"></div></a></li>
-
                 </ul>
             </li>
-            
+        </ul>
     </nav>
 </div>
-
-
                     <!-- navigation  end -->
                      <!-- navigation  end -->
-                    <p class="nav-middle-txt"><a href="/">ಕಲ್ಪರತ್ನ</a></p>
+                    <p class="nav-middle-txt"><a href="/">ಒಳನೋಟ</a></p>
                 </div>
             </div>
         </header>
@@ -275,19 +269,7 @@ pageLanguage: 'ml',
       {% endif %}
     </div>
    <!-- footer -->
-   
-            <footer class="fl-wrap main-footer">
-                   <div class="visitors">
-                <h1> Website visitors -
-                    <span>
-                        {{total_visitors}}
-                    </span>
-                </h1>
-            </div>
-                <div class="container">
-                      
-                    <!-- footer-widget-wrap -->
-                    <!-- footer -->
+
 <footer class="fl-wrap main-footer">
     <div class="visitors">
         <h1>Website visitors - <span>{{total_visitors}}</span></h1>
@@ -302,7 +284,7 @@ pageLanguage: 'ml',
                     <div class="footer-widget">
                         <div class="footer-widget-content">
                             <a href="/" class="footer-logo">
-                                <img src="{% static 'images/logo3.png' %}" alt="Olanota Logo">
+                                <img src="{% static 'images/logo2.png' %}" alt="Olanota Logo">
                             </a>
                             <div class="footer-social fl-wrap">
                                 <ul>
@@ -372,8 +354,6 @@ pageLanguage: 'ml',
                                     <li><a href="/list/?cat=health">ಆರೋಗ್ಯ</a></li>
                                     <li><a href="/list/?cat=local">ಲೋಕಲ್</a></li>
                                     <li><a href="/list/?cat=district">ಜಿಲ್ಲಾ</a></li>
-                                    <li><a href="/list/?cat=special">ವಿಶೇಷ</a></li>
-                                    <li><a href="/list/?cat=world">ಪ್ರಪಂಚ</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -398,7 +378,7 @@ pageLanguage: 'ml',
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> 
                 <!-- footer-widget end -->
 
                 <!-- footer-widget: Contact -->
@@ -410,7 +390,7 @@ pageLanguage: 'ml',
                                 <ul>
                                     <li>
                                         <i class="fa fa-envelope"></i> General Enquiries:<br/>
-                                        <a href="mailto:info@olanota.com">info@olanota.com</a>
+                                        <a href="mailto:olanotanews@gamil.com">olanotanews@gamil.com</a>
                                     </li>
                                 </ul>
                             </div>
@@ -452,11 +432,97 @@ pageLanguage: 'ml',
         
 
     </div>
+    <style>
+@media (max-width: 1048px) {
+
+  .main-menu {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    transform: translateX(-100%);
+    width: 260px;
+    height: 100vh;
+    background: #000;
+    z-index: 999999 !important;
+    overflow-y: auto;
+    transition: 0.3s ease;
+  }
+
+  .main-menu.vismobmenu {
+    transform: translateX(0);
+  }
+
+  .main-menu ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+
+  .main-menu ul li {
+    border-bottom: 1px solid #eee;
+  }
+
+  .main-menu ul li a {
+    color: #fff !important; 
+    font-size: 16px;
+    display: block;
+    padding: 12px 15px;
+  }
+
+}
+@media (max-width: 1048px) {
+
+  .main-menu ul {
+    display: block !important;
+    width: 100%;
+  }
+
+  .main-menu ul li {
+    display: block !important;
+    width: 100% !important;
+    float: none !important;
+  }
+
+  .main-menu ul li a {
+    display: block !important;
+    width: 100%;
+    padding: 14px 16px;
+    font-size: 16px;
+    color: #fff !important;
+  }
+
+}
+
+@media (max-width: 1048px) {
+
+  .nav-button-wrap {
+    position: absolute !important;
+    left: 10px;   /* ✅ move to left */
+    right: auto !important;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 9999;
+  }
+
+}
+
+</style>
     <!-- Main end -->
     <!--=============== scripts  ===============-->
-    <script src="{% static "/js/jquery.min.js" %}"></script>
-    <script src="{% static "/js/plugins.js" %}"></script>
-    <script src="{% static "/js/scripts.js" %}"></script>
+    <script src="{% static "js/jquery.min.js" %}"></script>
+    <script src="{% static "js/plugins.js" %}"></script>
+    <script src="{% static "js/scripts.js" %}"></script>
+
+    <script>
+$(document).ready(function () {
+    $(".nav-button-wrap").on("click", function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+
+        $(".main-menu").toggleClass("vismobmenu");
+    });
+});
+</script>
 </body>
 
 </html>

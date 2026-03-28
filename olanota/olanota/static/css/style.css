@@ -5921,4 +5921,101 @@ h4.cart-title span {
         font-weight: 900;
     }
 }
-  
+
+
+/* Mobile hamburger always visible */
+@media only screen and (max-width: 1064px) {
+  .nav-button-wrap {
+    display: block !important;
+    float: right;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    cursor: pointer;
+    position: relative;
+  }
+  .nav-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 22px;
+  }
+  .nav-button span {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background: #292929;
+    margin-bottom: 5px;
+    border-radius: 2px;
+    transition: all 0.2s ease;
+  }
+  .nav-button span:first-child { width: 60%; }
+
+  /* Animated X when open */
+  .menu-open .nav-button span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+    width: 100%;
+  }
+  .menu-open .nav-button span:nth-child(2) { opacity: 0; }
+  .menu-open .nav-button span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+
+  /* Slide-in menu panel */
+  .main-menu {
+    position: absolute;
+    top: 50px;
+    right: 0;
+    width: 280px;
+    max-height: 80vh;
+    overflow-y: auto;
+    background: #292929;
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    border-radius: 0 0 8px 8px;
+  }
+  .main-menu.vismobmenu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  /* Menu items */
+  .menusb ul { list-style: none; margin: 0; padding: 8px 0; }
+  .menusb li { width: 100%; border-bottom: 1px solid rgba(255,255,255,0.08); }
+  .menusb li a {
+    display: block;
+    padding: 12px 20px;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 600;
+    text-align: left;
+    font-family: 'Noto Sans Kannada', serif;
+  }
+  .menusb li a:hover { background: rgba(255,255,255,0.1); }
+
+  /* Submenu accordion */
+  .menusb li.dropdown > ul {
+    max-height: 0;
+    overflow: hidden;
+    background: #1a1a1a;
+    transition: max-height 0.35s ease;
+    padding: 0;
+  }
+  .menusb li.dropdown.open-sub > ul { /* max-height set by JS */ }
+  .menusb li.dropdown > ul li a {
+    padding-left: 32px;
+    font-size: 12px;
+    font-weight: 500;
+  }
+  .menusb li.dropdown > a i {
+    float: right;
+    margin-top: 2px;
+    transition: transform 0.25s ease;
+  }
+  .menusb li.dropdown.open-sub > a i { transform: rotate(180deg); }
+}

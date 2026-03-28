@@ -133,5 +133,108 @@
     });
   })
 
+  (function () {
+  "use strict";
+
+  // ── Mobile nav toggle ──────────────────────────────────────────
+  var navBtn   = document.querySelector('.nav-button-wrap');
+  var mainMenu = document.querySelector('.main-menu');
+
+  if (navBtn && mainMenu) {
+    navBtn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      mainMenu.classList.toggle('vismobmenu');
+      navBtn.classList.toggle('menu-open');
+    });
+  }
+
+  // Close when clicking outside
+  document.addEventListener('click', function (e) {
+    if (mainMenu && !mainMenu.contains(e.target) && navBtn && !navBtn.contains(e.target)) {
+      mainMenu.classList.remove('vismobmenu');
+      navBtn.classList.remove('menu-open');
+    }
+  });
+
+  // ── Mobile dropdown (ಜಿಲ್ಲಾ submenu) ─────────────────────────
+  var dropdownLinks = document.querySelectorAll('.menusb li.dropdown > a');
+  dropdownLinks.forEach(function (link) {
+    link.addEventListener('click', function (e) {
+      if (window.innerWidth <= 1064) {
+        e.preventDefault();
+        var parentLi = this.parentElement;
+        var sub = parentLi.querySelector('ul');
+        var isOpen = parentLi.classList.contains('open-sub');
+
+        // Close all other open submenus
+        document.querySelectorAll('.menusb li.dropdown.open-sub').forEach(function (el) {
+          el.classList.remove('open-sub');
+          var s = el.querySelector('ul');
+          if (s) s.style.maxHeight = null;
+        });
+
+        if (!isOpen && sub) {
+          parentLi.classList.add('open-sub');
+          sub.style.maxHeight = sub.scrollHeight + 'px';
+        }
+      }
+    });
+  });
+
+  // ── Desktop nav hover (already handled by CSS, but ensure active link) ──
+  var currentPath = window.location.pathname + window.location.search;
+  document.querySelectorAll('.nav-holder nav li a, .menusb li a').forEach(function (a) {
+    if (a.getAttribute('href') === currentPath) {
+      a.classList.add('act-link');
+    }
+  });
+
+  // ── Progress bar on scroll ──────────────────────────────────────
+  window.addEventListener('scroll', function () {
+    var scrollTop  = document.documentElement.scrollTop || document.body.scrollTop;
+    var scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    var progress = scrollHeight > 0 ? (scrollTop / scrollHeight) * 100 : 0;
+    var bar = document.querySelector('.progress-bar');
+    if (bar) bar.style.width = progress + '%';
+  });
+
+  // ── Search toggle ───────────────────────────────────────────────
+  var searchBtn  = document.querySelector('.show_search-btn');
+  var searchWrap = document.querySelector('.header-search-wrap');
+  if (searchBtn && searchWrap) {
+    searchBtn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      searchWrap.classList.toggle('vis-search');
+      searchBtn.classList.toggle('scwllink2');
+    });
+    document.addEventListener('click', function (e) {
+      if (!searchWrap.contains(e.target) && !searchBtn.contains(e.target)) {
+        searchWrap.classList.remove('vis-search');
+        searchBtn.classList.remove('scwllink2');
+      }
+    });
+  }
+
+  // ── Date/time display ───────────────────────────────────────────
+  var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  var now = new Date();
+  var numEl   = document.querySelector('.date_num');
+  var monEl   = document.querySelector('.date_mounth');
+  var yearEl  = document.querySelector('.date_year');
+  var timeEl  = document.getElementById('time');
+  if (numEl)  numEl.textContent  = now.getDate();
+  if (monEl)  monEl.textContent  = months[now.getMonth()];
+  if (yearEl) yearEl.textContent = now.getFullYear();
+  function updateTime() {
+    var t = new Date();
+    var h = String(t.getHours()).padStart(2,'0');
+    var m = String(t.getMinutes()).padStart(2,'0');
+    if (timeEl) timeEl.textContent = h + ':' + m;
+  }
+  updateTime();
+  setInterval(updateTime, 60000);
 
 })();
+  
+
+
