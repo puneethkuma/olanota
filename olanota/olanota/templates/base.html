@@ -29,6 +29,8 @@
     {% block meta %}{% endblock meta %}
 </head>
 
+
+
 <body>
     <script>
 function googleTranslateElementInit() {
@@ -208,6 +210,60 @@ pageLanguage: 'ml',
                 </div>
             </div>
         </header>
+
+
+<!-- ✅ CORRECT PLACE -->
+<div class="mobile-top-menu">
+    <nav>
+        <ul>
+            <li><a href="/">ಮುಖ್ಯ</a></li>
+            <li><a href="/list/?cat=news">ನ್ಯೂಸ್</a></li>
+            <li><a href="/list/?cat=Politics">ರಾಜಕೀಯ</a></li>
+            <li><a href="/list/?cat=crime">ಕ್ರೈಂ</a></li>
+            <li><a href="/list/?cat=sports">ಕ್ರೀಡೆ</a></li>
+            <li><a href="/list/?loc=India">ರಾಷ್ಟ್ರೀಯ</a></li>
+            <li><a href="/list/?loc=International">ಅಂತರರಾಷ್ಟ್ರೀಯ</a></li>
+            <li><a href="/list/?cat=cinema">ಸಿನಿಮಾ</a></li>
+            <li><a href="/list/?cat=health">ಆರೋಗ್ಯ</a></li>
+            <li><a href="/list/?cat=local">ಲೋಕಲ್</a></li>
+            <li class="dropdown">
+                <a href="/list/?cat=district">ಜಿಲ್ಲಾ <i class="fas fa-caret-down"></i></a>
+                <ul>
+                    <li><a href="/list/?loc=Bagalkot">ಬಾಗಲಕೋಟೆ</a></li>
+                    <li><a href="/list/?loc=Ballari (Bellary)">ಬಳ್ಳಾರಿ</a></li>
+                    <li><a href="/list/?loc=Belagavi (Belgaum)">ಬೆಳಗಾವಿ</a></li>
+                    <li><a href="/list/?loc=Bengaluru Rural">ಬೆಂಗಳೂರು ಗ್ರಾಮಾಂತರ</a></li>
+                    <li><a href="/list/?loc=Bengaluru Urban">ಬೆಂಗಳೂರು ನಗರ</a></li>
+                    <li><a href="/list/?loc=Bidar">ಬೀದರ್</a></li>
+                    <li><a href="/list/?loc=Chamarajanagara">ಚಾಮರಾಜನಗರ</a></li>
+                    <li><a href="/list/?loc=Chikkaballapura">ಚಿಕ್ಕಬಳ್ಳಾಪುರ</a></li>
+                    <li><a href="/list/?loc=Chikkamagaluru">ಚಿಕ್ಕಮಗಳೂರು</a></li>
+                    <li><a href="/list/?loc=Chitradurga">ಚಿತ್ರದುರ್ಗ</a></li>
+                    <li><a href="/list/?loc=Dakshina Kannada">ದಕ್ಷಿಣ ಕನ್ನಡ</a></li>
+                    <li><a href="/list/?loc=Davanagere">ದಾವಣಗೆರೆ</a></li>
+                    <li><a href="/list/?loc=Dharwad">ಧಾರವಾಡ</a></li>
+                    <li><a href="/list/?loc=Gadag">ಗದಗ</a></li>
+                    <li><a href="/list/?loc=Hassan">ಹಾಸನ</a></li>
+                    <li><a href="/list/?loc=Haveri">ಹಾವೇರಿ</a></li>
+                    <li><a href="/list/?loc=Kalaburagi (Gulbarga)">ಕಲಬುರಗಿ</a></li>
+                    <li><a href="/list/?loc=Kodagu">ಕೊಡಗು</a></li>
+                    <li><a href="/list/?loc=Kolar">ಕೋಲಾರ</a></li>
+                    <li><a href="/list/?loc=Koppal">ಕೊಪ್ಪಳ</a></li>
+                    <li><a href="/list/?loc=Mandya">ಮಂಡ್ಯ</a></li>
+                    <li><a href="/list/?loc=Mysuru (Mysore)">ಮೈಸೂರು</a></li>
+                    <li><a href="/list/?loc=Raichur">ರಾಯಚೂರು</a></li>
+                    <li><a href="/list/?loc=Ramanagara">ರಾಮನಗರ</a></li>
+                    <li><a href="/list/?loc=Shivamogga (Shimoga)">ಶಿವಮೊಗ್ಗ</a></li>
+                    <li><a href="/list/?loc=Tumakuru (Tumkur)">ತುಮಕೂರು</a></li>
+                    <li><a href="/list/?loc=Udupi">ಉಡುಪಿ</a></li>
+                    <li><a href="/list/?loc=Uttara Kannada">ಉತ್ತರ ಕನ್ನಡ</a></li>
+                    <li><a href="/list/?loc=Vijayanagara">ವಿಜಯನಗರ</a></li>
+                    <li><a href="/list/?loc=Vijayapura (Bijapur)">ವಿಜಯಪುರ</a></li>
+                    <li><a href="/list/?loc=Yadgiri">ಯಾದಗಿರಿ</a></li>
+                </ul>
+        </ul>
+    </nav>
+</div>
         <div class="ads-slider">
                 <div class="swiper-wrapper">
                 <!-- swiper-slide -->
@@ -433,79 +489,207 @@ pageLanguage: 'ml',
 
     </div>
     <style>
+      /* ================= SIDE MENU (MOBILE FIXED) ================= */
 @media (max-width: 1048px) {
 
   .main-menu {
-    position: fixed !important;
-    top: 0 !important;
-    left: 0 !important;
+    position: fixed;
+    top: 0;
+    left: 0;
     transform: translateX(-100%);
     width: 260px;
     height: 100vh;
     background: #000;
-    z-index: 999999 !important;
+    z-index: 999999;
     overflow-y: auto;
-    transition: 0.3s ease;
+    transition: transform 0.3s ease;
+    padding-top: 60px; /* ✅ space from top */
   }
 
   .main-menu.vismobmenu {
     transform: translateX(0);
   }
 
+  /* UL RESET */
   .main-menu ul {
+    margin: 0;
     padding: 0;
+    list-style: none;
+    display: block !important;
+  }
+
+  /* EACH ITEM */
+  .main-menu ul li {
+    display: block !important;
+    width: 100%;
+    border-bottom: 1px solid #222;
+  }
+
+  /* LINK STYLE */
+  .main-menu ul li a {
+    display: block !important;
+    width: 100%;
+    padding: 15px 18px;   /* ✅ perfect spacing */
+    font-size: 16px;
+    color: #fff !important; /* ✅ force white */
+    text-decoration: none;
+  }
+
+  /* HOVER EFFECT */
+  .main-menu ul li a:hover {
+    background: #111;
+    color: #ff3b3b !important;
+  }
+
+  /* DROPDOWN FIX */
+  .main-menu ul li ul {
+    display: none;
+    background: #111;
+  }
+
+  .main-menu ul li:hover > ul {
+    display: block;
+  }
+
+  .main-menu ul li ul li a {
+    padding-left: 30px; /* ✅ indent submenu */
+    font-size: 14px;
+  }
+}
+
+/* ================= MOBILE TOP HORIZONTAL MENU ================= */
+/* ================= MOBILE HORIZONTAL SLIDER NAV ================= */
+@media (max-width: 768px) {
+
+  .mobile-top-menu {
+    display: block;
+    width: 100%;
+    overflow-x: auto;     /* ✅ enables horizontal scroll */
+    overflow-y: hidden;
+    background: #fff;
+    border-bottom: 1px solid #eee;
+
+    position: sticky;
+    top: 0;
+    z-index: 9999;
+
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* HIDE SCROLLBAR */
+  .mobile-top-menu::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* 🔥 MAIN FIX */
+  .mobile-top-menu ul {
+    display: flex;
+    flex-wrap: nowrap;
+    width: max-content;        /* ✅ VERY IMPORTANT */
+    min-width: max-content;    /* ✅ ensures full width */
+    padding: 6px 8px;
     margin: 0;
     list-style: none;
   }
 
-  .main-menu ul li {
+  .mobile-top-menu ul li {
+    flex: 0 0 auto;           /* ✅ prevents shrinking */
+  }
+
+  /* 🔵 CLEAN BLOCK BUTTON */
+  .mobile-top-menu ul li a {
+    display: block;
+    padding: 8px 16px;
+    margin: 4px;
+
+    font-size: 13px;
+    font-weight: 500;
+    color: #333;
+    white-space: nowrap;
+
+    background: #f1f3f6;
+    border-radius: 20px;
+
+    text-decoration: none;
+  }
+
+  /* ACTIVE */
+  .mobile-top-menu ul li a.active {
+    background: #007bff;
+    color: #fff;
+  }
+}
+
+@media (max-width: 768px) {
+
+  /* Hide district list inside horizontal bar */
+  .mobile-top-menu .dropdown ul {
+    display: none;
+    position: absolute;
+    top: 45px;
+    left: 0;
+    background: #fff;
+    width: 100%;
+    max-height: 300px;
+    overflow-y: auto;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+    z-index: 99999;
+  }
+
+  /* Show dropdown when active */
+  .mobile-top-menu .dropdown.active ul {
+    display: block;
+  }
+
+  .mobile-top-menu .dropdown ul li {
+    display: block;
     border-bottom: 1px solid #eee;
   }
 
-  .main-menu ul li a {
-    color: #fff !important; 
-    font-size: 16px;
+  .mobile-top-menu .dropdown ul li a {
     display: block;
-    padding: 12px 15px;
+    padding: 10px 15px;
+    color: #000;
+    background: #fff;
+    border-radius: 0;
   }
 
 }
-@media (max-width: 1048px) {
-
-  .main-menu ul {
-    display: block !important;
-    width: 100%;
+/* ================= HIDE MOBILE MENU IN DESKTOP ================= */
+@media (min-width: 769px) {
+  .mobile-top-menu {
+    display: none;
   }
-
-  .main-menu ul li {
-    display: block !important;
-    width: 100% !important;
-    float: none !important;
-  }
-
-  .main-menu ul li a {
-    display: block !important;
-    width: 100%;
-    padding: 14px 16px;
-    font-size: 16px;
-    color: #fff !important;
-  }
-
 }
 
-@media (max-width: 1048px) {
-
-  .nav-button-wrap {
-    position: absolute !important;
-    left: 10px;   /* ✅ move to left */
-    right: auto !important;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 9999;
-  }
-
+.main-menu ul li a {
+  text-align: left;   /* ✅ force left */
+}
+body.menu-open .mobile-top-menu {
+  display: none !important;
+}
+.menu-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  z-index: 999998;
+  display: none;
 }
 
+body.menu-open .menu-overlay {
+  display: block;
+}
+
+body.menu-open .mobile-top-menu {
+  display: none !important;
+}
+
+.mobile-top-menu {
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
 </style>
     <!-- Main end -->
     <!--=============== scripts  ===============-->
@@ -513,14 +697,49 @@ pageLanguage: 'ml',
     <script src="{% static "js/plugins.js" %}"></script>
     <script src="{% static "js/scripts.js" %}"></script>
 
-    <script>
+ <script>
 $(document).ready(function () {
-    $(".nav-button-wrap").on("click", function (e) {
-        e.preventDefault();
-        e.stopPropagation();
 
-        $(".main-menu").toggleClass("vismobmenu");
-    });
+  $(".nav-button-wrap").on("click", function (e) {
+    e.preventDefault();
+    e.stopPropagation();
+
+    $(".main-menu").toggleClass("vismobmenu");
+    $("body").toggleClass("menu-open");
+  });
+
+  $(".menu-overlay").on("click", function () {
+    $(".main-menu").removeClass("vismobmenu");
+    $("body").removeClass("menu-open");
+  });
+
+  $(".mobile-top-menu ul li a").on("click", function () {
+
+    $(".mobile-top-menu ul li a").removeClass("active");
+    $(this).addClass("active");
+
+    var el = $(this);
+    var container = $(".mobile-top-menu");
+
+    container.animate({
+      scrollLeft: el.position().left + container.scrollLeft() - 80
+    }, 300);
+
+  });
+
+});
+
+// DISTRICT DROPDOWN CLICK
+$(".mobile-top-menu .dropdown > a").on("click", function (e) {
+  e.preventDefault();
+
+  var parent = $(this).parent();
+
+  // close others
+  $(".mobile-top-menu .dropdown").not(parent).removeClass("active");
+
+  // toggle current
+  parent.toggleClass("active");
 });
 </script>
 </body>
